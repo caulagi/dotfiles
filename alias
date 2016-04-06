@@ -1,0 +1,2 @@
+alias wwstay='ssh -i ~/Downloads/cert/wwstay-internal.pem ubuntu@wwstay.com'
+alias demo='ssh -i ~/Downloads/cert/demo.pem ubuntu@demo.wwstay.com'

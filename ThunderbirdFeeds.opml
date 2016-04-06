@@ -1,0 +1,84 @@
+<opml version="1.0" xmlns:fz="urn:forumzilla:">
+  <head>
+    <title>Thunderbird OPML Export - Blogs &amp; News Feeds</title>
+    <dateCreated>Sun, 11 Oct 2015 07:51:43 GMT</dateCreated>
+  </head>
+  <body>
+    <outline title="The Django weblog">
+      <outline type="rss" title="The Django weblog" text="The Django weblog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="https://www.djangoproject.com/rss/weblog/" htmlUrl="https://www.djangoproject.com/weblog/"/></outline>
+    <outline title="The WHATWG Blog">
+      <outline type="rss" title="The WHATWG Blog" text="The WHATWG Blog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://blog.whatwg.org/feed" htmlUrl="https://blog.whatwg.org"/></outline>
+    <outline title="Cog Blog">
+      <outline type="rss" title="Cog Blog" text="Cog Blog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.mirandabanda.org/cogblog/feed/" htmlUrl="http://www.mirandabanda.org/cogblog"/></outline>
+    <outline title="Software Reflections">
+      <outline type="rss" title="Software Reflections" text="Software Reflections" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://simberon.blogspot.com/feeds/posts/default" htmlUrl="http://simberon.blogspot.com/"/></outline>
+    <outline title="Talking Meta">
+      <outline type="rss" title="Talking Meta" text="Talking Meta" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/TalkingMeta" htmlUrl="http://www.lukas-renggli.ch/blog"/></outline>
+    <outline title="Python Jobs">
+      <outline type="rss" title="Python Jobs:" text="Python Jobs:" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/python/pyjobo?format=xml" htmlUrl="https://python.org/jobs/"/></outline>
+    <outline title="Nodejs Jobs Job Site">
+      <outline type="rss" title="Node.js Jobs Job Site" text="Node.js Jobs Job Site" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://jobs.nodejs.org/a/jbb/find-jobs-rss" htmlUrl="http://jobs.nodejs.org/a/jbb/find-jobs"/></outline>
+    <outline title="Room 101">
+      <outline type="rss" title="Room 101" text="Room 101" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://gbracha.blogspot.com/feeds/posts/default" htmlUrl="http://gbracha.blogspot.com/"/></outline>
+    <outline title="Hacker News">
+      <outline type="rss" title="Hacker News" text="Hacker News" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://news.ycombinator.com/rss" htmlUrl="https://news.ycombinator.com/"/></outline>
+    <outline title="petermichauxca">
+      <outline type="rss" title="peter.michaux.ca" text="peter.michaux.ca" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://peter.michaux.ca/feed/atom.xml" htmlUrl="http://peter.michaux.ca/"/></outline>
+    <outline title="A List Apart">
+      <outline type="rss" title="A List Apart" text="A List Apart" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.alistapart.com/site/rss" htmlUrl="http://alistapart.com"/></outline>
+    <outline title="Google Open Source Blog">
+      <outline type="rss" title="Google Open Source Blog" text="Google Open Source Blog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/GoogleOpenSourceBlog?format=xml" htmlUrl="http://google-opensource.blogspot.com/"/></outline>
+    <outline title="Squeaking Along">
+      <outline type="rss" title="Squeaking Along" text="Squeaking Along" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://squeakingalong.wordpress.com/feed/" htmlUrl="https://squeakingalong.wordpress.com"/></outline>
+    <outline title="thisContext">
+      <outline type="rss" title="thisContext" text="thisContext" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://thiscontext.wordpress.com/feed/" htmlUrl="http://thiscontext.com"/></outline>
+    <outline title="Django community aggregator Django jobs">
+      <outline type="rss" title="Django community aggregator: Django jobs" text="Django community aggregator: Django jobs" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="https://www.djangoproject.com/rss/community/jobs/" htmlUrl="https://www.djangoproject.com/rss/community/jobs/"/></outline>
+    <outline title="DailyJS">
+      <outline type="rss" title="DailyJS" text="DailyJS" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/dailyjs" htmlUrl="http://dailyjs.com/"/></outline>
+    <outline title="Functional Jobs All Jobs">
+      <outline type="rss" title="Functional Jobs: All Jobs" text="Functional Jobs: All Jobs" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://functionaljobs.com/jobs/?format=rss" htmlUrl="http://functionaljobs.com/"/></outline>
+    <outline title="Pharo Open Source Smalltalk — News">
+      <outline type="rss" title="Pharo Open Source Smalltalk — News" text="Pharo Open Source Smalltalk — News" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.pharo-project.org/news?rss" htmlUrl="http://www.pharo-project.org/news"/></outline>
+    <outline title="Perfection kills">
+      <outline type="rss" title="Perfection kills" text="Perfection kills" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/PerfectionKills" htmlUrl="http://perfectionkills.com/"/></outline>
+    <outline title="YUI Blog » Performance">
+      <outline type="rss" title="YUI Blog » Performance" text="YUI Blog » Performance" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.yuiblog.com/yuiblog/performance" htmlUrl="http://www.yuiblog.com/blog"/></outline>
+    <outline title="Smallissimo">
+      <outline type="rss" title="Smallissimo" text="Smallissimo" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://smallissimo.blogspot.com/feeds/posts/default" htmlUrl="http://smallissimo.blogspot.com/"/></outline>
+    <outline title="Django community aggregator Community blog posts">
+      <outline type="rss" title="Django community aggregator: Community blog posts" text="Django community aggregator: Community blog posts" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="https://www.djangoproject.com/rss/community/blogs/" htmlUrl="https://www.djangoproject.com/rss/community/blogs/"/></outline>
+    <outline title="Django Jobs feed">
+      <outline type="rss" title="Django Jobs feed" text="Django Jobs feed" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.djangojobs.org/feeds/latest/" htmlUrl="http://www.djangojobs.org/gig/"/></outline>
+    <outline title="Paul Graham Essays">
+      <outline type="rss" title="Paul Graham: Essays" text="Paul Graham: Essays" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.aaronsw.com/2002/feeds/pgessays.rss" htmlUrl="http://www.paulgraham.com/"/></outline>
+    <outline title="antirez weblog">
+      <outline type="rss" title="antirez weblog" text="antirez weblog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/antirez?format=xml" htmlUrl="http://antirez.com"/></outline>
+    <outline title="The Weblog of Peter Ahé">
+      <outline type="rss" title="The Weblog of Peter Ahé" text="The Weblog of Peter Ahé" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://digital-sushi.org/feed/" htmlUrl="http://digital-sushi.org"/></outline>
+    <outline title="Procrastineering - Project blog for Johnny Chung Lee">
+      <outline type="rss" title="Procrastineering - Project blog for Johnny Chung Lee" text="Procrastineering - Project blog for Johnny Chung Lee" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://procrastineering.blogspot.com/feeds/posts/default" htmlUrl="http://procrastineering.blogspot.com/"/></outline>
+    <outline title="DjangoGigscom - All Remote Gigs">
+      <outline type="rss" title="DjangoGigs.com - All Remote Gigs" text="DjangoGigs.com - All Remote Gigs" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://djangogigs.com/feeds/gigs/remote/" htmlUrl="https://djangogigs.com//"/></outline>
+    <outline title="High Performance Web Sites">
+      <outline type="rss" title="High Performance Web Sites" text="High Performance Web Sites" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.stevesouders.com/blog/feed/" htmlUrl="http://www.stevesouders.com/blog"/></outline>
+    <outline title="remy sharp's blog">
+      <outline type="rss" title="remy sharp's b:log" text="remy sharp's b:log" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/remysharp?format=xml" htmlUrl="https://remysharp.com"/></outline>
+    <outline title="YUI Blog » Accessibility">
+      <outline type="rss" title="YUI Blog » Accessibility" text="YUI Blog » Accessibility" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.yuiblog.com/yuiblog/accessibility" htmlUrl="http://www.yuiblog.com/blog"/></outline>
+    <outline title="Smalltalk Zen">
+      <outline type="rss" title="Smalltalk Zen" text="Smalltalk Zen" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://smalltalkzen.wordpress.com/feed/" htmlUrl="https://smalltalkzen.wordpress.com"/></outline>
+    <outline title="QuirksBlog">
+      <outline type="rss" title="QuirksBlog" text="QuirksBlog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://www.quirksmode.org/blog/index.xml" htmlUrl="http://www.quirksmode.org/blog/"/></outline>
+    <outline title="GitHub Jobs">
+      <outline type="rss" title="GitHub Jobs" text="GitHub Jobs" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="https://jobs.github.com/positions.atom" htmlUrl="http://jobs.github.com/"/></outline>
+    <outline title="Beta List">
+      <outline type="rss" title="Beta List" text="Beta List" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/betalist?format=xml" htmlUrl="http://betalist.com"/></outline>
+    <outline title="3 + 4">
+      <outline type="rss" title="3 + 4" text="3 + 4" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://blog.3plus4.org/feed/" htmlUrl="http://blog.3plus4.org"/></outline>
+    <outline title="NCZOnline">
+      <outline type="rss" title="NCZOnline" text="NCZOnline" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.feedburner.com/nczonline" htmlUrl="https://www.nczonline.net/"/></outline>
+    <outline title="The Changelog">
+      <outline type="rss" title="The Changelog" text="The Changelog" version="RSS" fz:quickMode="false" fz:options="{&quot;version&quot;:1,&quot;category&quot;:{&quot;enabled&quot;:false,&quot;prefixEnabled&quot;:false,&quot;prefix&quot;:null}}" xmlUrl="http://feeds.5by5.tv/changelog" htmlUrl="http://5by5.tv/changelog"/></outline>
+  </body>
+</opml>

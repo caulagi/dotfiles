@@ -1,0 +1,28 @@
+set hostname "caulagi.com"
+set realname "Pradip Caulagi"
+set replyto  "caulagi@gmail.com"
+
+server news.aioe.org       ".slrn/newsrc_aioe"
+server aioe.org            ".slrn/newsrc_aioe"
+
+set quote_string ">"
+
+% if non-zero, show description of newsgroup if available
+% set show_descriptions 1
+
+% If 0, do not beep terminal.  If 1, send audible beep.  If 2, send only 
+% visible bell.  If 3, send both.
+set beep 0
+
+% If non-zero, slrn will automatically un-subscribe new groups.  
+% The default is 0.
+set unsubscribe_new_groups 0
+
+% What to wrap when wrapping an article:
+%  0 or 4 ==> wrap body
+%  1 or 5 ==> wrap headers, body
+%  2 or 6 ==> wrap quoted text, body
+%  3 or 7 ==> wrap headers, quoted text, body
+% The higher number indicates that every article will be automatically 
+% wrapped.
+set wrap_flags 7
