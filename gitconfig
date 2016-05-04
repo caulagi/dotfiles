@@ -1,5 +1,14 @@
 [user]
-	name = Pradip P Caulagi
+	name = Pradip Caulagi
 	email = caulagi@gmail.com
+	signingkey = 574E489118BAFA17
 [push]
 	default = simple
+[core]
+	editor = /usr/bin/vim
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[commit]
+	gpgsign = true
