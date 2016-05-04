@@ -30,7 +30,6 @@ call vundle#end()
 filetype plugin indent on
 syntax enable
 set background=dark
-colorscheme solarized
 
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
