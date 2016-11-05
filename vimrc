@@ -38,14 +38,6 @@ let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
 
-function! LintStatus()
-  let status = ALEGetStatusLine()
-  if status != ''
-    return '['.status.']'
-  else
-    return ''
-endfunction
-
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
@@ -59,7 +51,7 @@ let maplocalleader=','
 
 map <F2> <Esc>:1,$!xmllint --format -<CR>
 map <F3> <Esc>i# -*- coding: utf-8 -*-<Esc>
-set statusline=%t%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [line=%l\ of\ %L]\ [col=%v]\ \[%{fugitive#head()}]\ \%{LintStatus()}
+set statusline=%t%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [line=%l\ of\ %L]\ [col=%v]\ \[%{fugitive#head()}]
 set laststatus=2
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
@@ -69,7 +61,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|)$|[\/]node_modules$'
 
 function! InsertLine()
-    let trace = expand("import ipdb; ipdb.set_trace()")
+    let trace = expand("import pdb; pdb.set_trace()")
         execute "normal o".trace
 endfunction
 map <Leader>i :call InsertLine()<CR>
