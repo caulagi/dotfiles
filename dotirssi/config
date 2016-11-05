@@ -26,7 +26,6 @@ channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
   { name = "silc"; chatnet = "silc"; autojoin = "No"; },
   { name = "#erlang"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#node.js"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#rust-beginners"; chatnet = "mozilla"; autojoin = "yes"; }
 );
 
