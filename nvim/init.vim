@@ -7,7 +7,7 @@ set expandtab
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'tpope/vim-fugitive'
@@ -27,7 +27,7 @@ Plugin 'mileszs/ack.vim'
 
 call vundle#end()
 
-let &runtimepath.=',~/.vim/bundle/ale'
+let &runtimepath.=',~/.config/nvim/bundle/ale'
 
 filetype plugin indent on
 syntax enable

@@ -96,3 +96,7 @@ export GOPATH=$HOME/src/go
 export PATH=/Users/pcaulagi/Downloads/packer_0.8.6_darwin_amd64:~/.cargo/bin:$GOPATH/bin:$PATH
 
 export GPG_TTY=$(tty)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
