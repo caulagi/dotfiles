@@ -37,6 +37,7 @@ let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
 let g:ale_sign_column_always = 1
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 let mapleader=','
 let maplocalleader=','
@@ -44,7 +45,7 @@ let maplocalleader=','
 map <F2> <Esc>:1,$!xmllint --format -<CR>
 map <F3> <Esc>i# -*- coding: utf-8 -*-<Esc>
 
-set statusline=%t%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [line=%l\ of\ %L]\ [col=%v]\ \[%{fugitive#head()}]
+set statusline=%t%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [line=%l\ of\ %L]\ [col=%v]\ \[%{fugitive#head()}]\ \[%{ALEGetStatusLine()}]
 set laststatus=2
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
