@@ -7,25 +7,25 @@ set expandtab
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.local/share/nvim/plugged')
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'rust-lang/rust.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'jceb/vim-orgmode'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'tpope/vim-speeddating'
-Plugin 'fatih/vim-go'
-Plugin 'simeji/winresizer'
-Plugin 'w0rp/ale'
-Plugin 'tpope/vim-commentary'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'mileszs/ack.vim'
 
-call vundle#end()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'rust-lang/rust.vim'
+Plug 'nvie/vim-flake8'
+Plug 'jceb/vim-orgmode'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-speeddating'
+Plug 'fatih/vim-go'
+Plug 'simeji/winresizer'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+
+call plug#end()
 
 let &runtimepath.=',~/.config/nvim/bundle/ale'
 
