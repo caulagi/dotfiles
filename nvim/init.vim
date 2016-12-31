@@ -31,6 +31,8 @@ let &runtimepath.=',~/.config/nvim/bundle/ale'
 
 filetype plugin indent on
 syntax enable
+
+set termguicolors
 set background=dark
 
 let g:pysmell_matcher='camel-case'
