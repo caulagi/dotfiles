@@ -13,5 +13,6 @@ fi
 source .cargo/env
 source .alias
 
+export GPG_TTY=$(tty)
 # export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 # export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
