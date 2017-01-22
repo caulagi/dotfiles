@@ -47,6 +47,9 @@ let maplocalleader=','
 map <F2> <Esc>:1,$!xmllint --format -<CR>
 map <F3> <Esc>i# -*- coding: utf-8 -*-<Esc>
 
+nnoremap <c-p> :FZF<cr>
+nnoremap <Leader>a :Ack!<cr>
+
 set statusline=%t%m%r\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [line=%l\ of\ %L]\ [col=%v]\ \[%{fugitive#head()}]\ \[%{ALEGetStatusLine()}]
 set laststatus=2
 
