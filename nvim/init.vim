@@ -8,23 +8,21 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'rust-lang/rust.vim'
-Plug 'nvie/vim-flake8'
-Plug 'jceb/vim-orgmode'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-speeddating'
 Plug 'fatih/vim-go'
-Plug 'simeji/winresizer'
-Plug 'w0rp/ale'
-Plug 'tpope/vim-commentary'
+Plug 'jceb/vim-orgmode'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'nvie/vim-flake8'
+Plug 'rust-lang/rust.vim'
+Plug 'simeji/winresizer'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 call plug#end()
 
 let &runtimepath.=',~/.config/nvim/bundle/ale'
