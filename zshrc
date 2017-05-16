@@ -19,3 +19,7 @@ export GPG_TTY=$(tty)
 # export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 # export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
 export ONEFLOW_CLIENT_DIR=/Users/pcaulagi/oneflow/src/client
+export HOST_IP=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'`
+
+# OPAM configuration
+. /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
