@@ -1,7 +1,7 @@
 [user]
 	name = Pradip Caulagi
 	email = caulagi@gmail.com
-	signingkey = D1FA632522E1149E
+	signingkey = 6AA921A27E0A673A
 [push]
 	default = simple
 [core]
