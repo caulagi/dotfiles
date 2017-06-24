@@ -1,3 +1,4 @@
 alias vim='nvim'
 alias toystori='. ~/.venv/toystori-v2/bin/activate'
 alias allihoopa='. ~/.venv/allihoopa/bin/activate'
+alias ras='. ~/.venv/ras/bin/activate'

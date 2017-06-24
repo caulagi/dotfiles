@@ -4,6 +4,7 @@
 	signingkey = 6AA921A27E0A673A
 [push]
 	default = simple
+	recurseSubmodules = on-demand
 [core]
 	editor = /usr/bin/vim
 [filter "lfs"]
@@ -12,3 +13,7 @@
 	required = true
 [commit]
 	gpgsign = true
+[diff]
+	submodule = log
+[status]
+	submodulesummary = 1
