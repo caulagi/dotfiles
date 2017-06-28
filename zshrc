@@ -30,3 +30,5 @@ if [ -f '/Users/pcaulagi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/pcaulagi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/pcaulagi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NNTPSERVER=nntp.aioe.org
