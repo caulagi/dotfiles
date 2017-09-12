@@ -43,4 +43,8 @@ if [[ -s '/Users/pradipcaulagi/Downloads/google-cloud-sdk/completion.zsh.inc' ]]
     source '/Users/pradipcaulagi/Downloads/google-cloud-sdk/completion.zsh.inc'
 fi
 
+# enable completions for docker, docker-compose
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
 export NNTPSERVER=nntp.aioe.org
