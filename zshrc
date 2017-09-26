@@ -48,6 +48,5 @@ fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
 export PROJECT_ID=`gcloud config get-value project`
-export DB_DUMP=/Users/pradipcaulagi/dumps/Dump20170825.sql
 export HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2`
 export NNTPSERVER=nntp.aioe.org
