@@ -2,3 +2,5 @@ _docker
 _docker-compose
 _pass
 _rustup
+_helm
+aws_zsh_completer.sh
