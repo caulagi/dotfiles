@@ -86,3 +86,6 @@ endfunction
 map <Leader>j :call InsertIPdb()<CR>
 
 let g:ackprg = 'rg --vimgrep --no-heading'
+
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
