@@ -3,4 +3,5 @@ _docker-compose
 _pass
 _rustup
 _helm
+_kops
 aws_zsh_completer.sh
