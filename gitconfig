@@ -1,7 +1,7 @@
 [user]
 	name = Pradip Caulagi
 	email = caulagi@gmail.com
-	signingkey = 6AA921A27E0A673A
+	signingkey = 036E174458FEF4BB
 [push]
 	default = simple
 	recurseSubmodules = on-demand
