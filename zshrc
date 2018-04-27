@@ -62,3 +62,5 @@ source ~/.zsh/completion/_helm
 source ~/.zsh/completion/_kops
 
 source ~/.personal
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
