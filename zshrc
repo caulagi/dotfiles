@@ -47,9 +47,11 @@ fi
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-export PROJECT_ID=`gcloud config get-value project`
+# export PROJECT_ID=`gcloud config get-value project`
 #export HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2`
 # for cases where we can't use docker.for.mac.localhost in containers
+#
+export CLOUDSDK_PYTHON=python2.7
 export HOST_IP=192.168.65.2
 export NNTPSERVER=nntp.aioe.org
 
