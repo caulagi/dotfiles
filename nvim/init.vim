@@ -34,9 +34,6 @@ call plug#end()
 
 syntax enable
 
-set termguicolors
-set background=dark
-
 let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
@@ -105,3 +102,6 @@ let g:LanguageClient_autoStart = 1
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
