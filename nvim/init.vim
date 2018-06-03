@@ -74,11 +74,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
-function! InsertPdb()
-    let trace = expand("import pdb; pdb.set_trace()")
-        execute "normal o".trace
-endfunction
-map <Leader>i :call InsertIPdb()<CR>
 function! InsertIPdb()
     let trace = expand("import ipdb; ipdb.set_trace()")
         execute "normal o".trace
