@@ -49,7 +49,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#default#layout = [
   \ [ 'y', 'z', 'error', 'c' ],
   \ [ 'x', 'a', 'b' ]
