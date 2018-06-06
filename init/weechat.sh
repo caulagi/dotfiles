@@ -6,6 +6,7 @@ echo "Enter irc password"
 read irc_password
 
 sh -c "weechat --no-connect --run-command '\
+    /filter add joinquit * irc_join,irc_part,irc_quit *;\
     /secure passphrase $secret;\
     /quit'"
 
@@ -21,7 +22,6 @@ sh -c "weechat --no-connect --run-command '\
     /secure set irc_password $irc_password;\
     /set irc.server.freenode.sasl_username \"caulagi\";\
     /set irc.server.freenode.sasl_password \"\${sec.data.irc_password}\";\
-    /set irc.server.freenode.autojoin \"#erlang\";\
     /quit'"
 
 # Mozilla
