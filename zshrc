@@ -15,6 +15,8 @@ bindkey "^E" vi-end-of-line
 source ~/.cargo/env
 source ~/.alias
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 # export OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib
 # export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
