@@ -30,6 +30,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'prettier/vim-prettier', {
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 call plug#end()
 
 syntax enable
