@@ -66,12 +66,12 @@ let maplocalleader=','
 
 nmap <F2> <Esc>:1,$!xmllint --format -<CR>
 nmap <F3> <Esc>i# -*- coding: utf-8 -*-<Esc>
-nmap <F8> <Plug>(ale_fix)
 
 nnoremap <c-p> :FZF<cr>
 nnoremap <Leader>a :Ack!<cr>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-K> <Plug>(ale_fix)
 
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
