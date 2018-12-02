@@ -40,27 +40,25 @@ let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
 
+" LINTING and language server
 call airline#parts#define_function('ALE', 'ALEGetStatusLine')
 call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-let g:airline_section_error = airline#section#create_right(['ALE'])
-let g:ale_statusline_format = ['✘ %d', '∆ %d', '● ok']
 let g:ale_fixers = {
-\   'python': ['isort', 'autopep8'],
+\   'python': ['black'],
+\}
+let g:ale_linters = {
+\   'python': ['flake8'],
 \}
 
+" STATUS line
 let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
 let g:airline_theme = 'minimalist'
 let g:airline#extensions#default#layout = [
-  \ [ 'y', 'z', 'error', 'c' ],
-  \ [ 'x', 'a', 'b' ]
+  \ [ 'y', 'error', 'warning', 'c' ],
+  \ [ 'x', 'a', 'b', 'z' ]
   \ ]
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
-
 set laststatus=2  " always show status line
 
 let mapleader=','
@@ -93,6 +91,7 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'reason': ['ocaml-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ 'python': ['pyls'],
     \ }
 
 " Automatically start language servers.
