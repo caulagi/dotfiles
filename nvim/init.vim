@@ -40,7 +40,9 @@ let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
 
-let g:airline_section_error = '%{ALEGetStatusLine()}'
+call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:ale_statusline_format = ['✘ %d', '∆ %d', '● ok']
 let g:ale_fixers = {
 \   'python': ['isort', 'autopep8'],
