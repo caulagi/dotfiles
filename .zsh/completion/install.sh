@@ -9,3 +9,4 @@ rustup completions zsh > ~/.zsh/completion/_rustup
 kops completion zsh > ~/.zsh/completion/_kops
 helm completion zsh > ~/.zsh/completion/_helm
 curl -L https://raw.githubusercontent.com/aws/aws-cli/develop/bin/aws_zsh_completer.sh > ~/.zsh/completion/aws_zsh_completer.sh
+pipenv --completion > ~/.zsh/completion/_pipenv

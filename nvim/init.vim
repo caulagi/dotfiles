@@ -28,12 +28,13 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'prettier/vim-prettier', {
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 call plug#end()
 
 syntax enable
-
-set termguicolors
-set background=dark
 
 let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
@@ -50,7 +51,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'minimalist'
 let g:airline#extensions#default#layout = [
   \ [ 'y', 'z', 'error', 'c' ],
   \ [ 'x', 'a', 'b' ]
@@ -65,21 +66,16 @@ let maplocalleader=','
 
 nmap <F2> <Esc>:1,$!xmllint --format -<CR>
 nmap <F3> <Esc>i# -*- coding: utf-8 -*-<Esc>
-nmap <F8> <Plug>(ale_fix)
 
 nnoremap <c-p> :FZF<cr>
 nnoremap <Leader>a :Ack!<cr>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-K> <Plug>(ale_fix)
 
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
-function! InsertPdb()
-    let trace = expand("import pdb; pdb.set_trace()")
-        execute "normal o".trace
-endfunction
-map <Leader>i :call InsertIPdb()<CR>
 function! InsertIPdb()
     let trace = expand("import ipdb; ipdb.set_trace()")
         execute "normal o".trace
@@ -88,5 +84,21 @@ map <Leader>j :call InsertIPdb()<CR>
 
 let g:ackprg = 'rg --vimgrep --no-heading'
 
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" configuration for language server
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
