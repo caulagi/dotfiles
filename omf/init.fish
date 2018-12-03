@@ -26,7 +26,7 @@ set -xg HOST_IP 192.168.65.2
 set -xg NNTPSERVER nntp.aioe.org
 
 set -xg GOPATH ~/go
-set -xg PATH $GOPATH/bin $PATH
+set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH
 
 . ~/.alias
 . ~/.personal
