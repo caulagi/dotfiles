@@ -49,6 +49,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
 \   'python': ['flake8'],
 \}
+let g:ale_sign_column_always = 1
 
 " STATUS line
 let g:airline_powerline_fonts = 1
