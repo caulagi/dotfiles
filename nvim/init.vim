@@ -41,8 +41,6 @@ let g:rbpt_max = 16
 let g:winresizer_enable = 1
 
 " LINTING and language server
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
 let g:ale_fixers = {
 \   'python': ['black'],
 \}
@@ -60,6 +58,10 @@ let g:airline#extensions#default#layout = [
   \ ]
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = "✘ "
+let g:airline#extensions#ale#warning_symbol = "∆ "
+let g:airline#extensions#ale#show_line_numbers = 0
+let g:airline_skip_empty_sections = 1
 set laststatus=2  " always show status line
 
 let mapleader=','
