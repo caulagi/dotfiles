@@ -43,9 +43,11 @@ let g:winresizer_enable = 1
 " LINTING and language server
 let g:ale_fixers = {
 \   'python': ['black'],
+\   'javascript': ['prettier'],
 \}
 let g:ale_linters = {
 \   'python': ['flake8'],
+\   'javascript': ['eslint'],
 \}
 let g:ale_sign_column_always = 1
 
@@ -95,6 +97,7 @@ let g:LanguageClient_serverCommands = {
     \ 'reason': ['ocaml-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ 'python': ['pyls'],
+    \ 'javascript': ['javascript-typescript-langserver']
     \ }
 
 " Automatically start language servers.
