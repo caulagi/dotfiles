@@ -32,3 +32,6 @@ set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/
 . ~/.personal
 
 eval (direnv hook fish)
+
+# OPAM configuration
+. /Users/pradipcaulagi/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
