@@ -3,6 +3,7 @@ set tabstop=4
 set ic
 set shiftwidth=4
 set expandtab
+set undofile
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -32,6 +33,7 @@ Plug 'reasonml-editor/vim-reason-plus'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'prettier/vim-prettier', {
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
+Plug 'airblade/vim-rooter'
 call plug#end()
 
 syntax enable
