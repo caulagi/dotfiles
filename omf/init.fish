@@ -19,9 +19,6 @@ set -xg OPENSSL_INCLUDE_DIR /usr/local/opt/openssl/include
 # use gitignore when searching with fzf
 # export FZF_DEFAULT_COMMAND='ag -g ""'
 
-# source ~/Downloads/google-cloud-sdk/path.fish.inc
-
-set -xg PROJECT_ID `gcloud config get-value project`
 set -xg HOST_IP 192.168.65.2
 set -xg NNTPSERVER nntp.aioe.org
 
