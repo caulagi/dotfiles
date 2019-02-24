@@ -83,6 +83,25 @@ nmap <silent> <C-K> <Plug>(ale_fix)
 
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
+" format json files as <leader>jq
+if executable('jq')
+    command! -nargs=? Jq call s:Jq(<f-args>)
+    function! s:Jq(...)
+        let l:filetype = &filetype
+        if 'json' != l:filetype
+            echo "This File Is No Json File"
+            return
+        endif
+        if 0 == a:0
+            let l:arg = "."
+        else
+            let l:arg=a:1
+        endif
+        execute "%! jq \"" . l:arg . "\""
+    endfunction
+    nmap <leader>jq :Jq<CR>
+endif
+
 function! InsertIPdb()
     let trace = expand("import ipdb; ipdb.set_trace()")
         execute "normal o".trace
