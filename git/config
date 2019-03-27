@@ -6,7 +6,7 @@
 	default = simple
 	recurseSubmodules = on-demand
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/bin/nvim
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -17,3 +17,6 @@
 	submodule = log
 [status]
 	submodulesummary = 1
+
+[alias]
+    ci = commit --signoff
