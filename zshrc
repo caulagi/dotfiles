@@ -41,6 +41,7 @@ export NNTPSERVER=nntp.aioe.org
 
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
+export PATH=$PATH:$HOME/.linkerd2/bin
 
 source ~/.zsh/completion/*
 source ~/.zsh/completion/aws_zsh_completer.sh
