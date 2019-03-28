@@ -6,7 +6,7 @@
 	default = simple
 	recurseSubmodules = on-demand
 [core]
-	editor = /usr/bin/nvim
+	editor = /usr/local/bin/nvim
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
