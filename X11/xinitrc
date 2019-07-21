@@ -1,3 +1,2 @@
-# xset +fp /usr/share/fonts/TTF/
 setxkbmap -layout se
 exec i3
