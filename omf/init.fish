@@ -24,6 +24,7 @@ set -xg NNTPSERVER nntp.aioe.org
 
 set -xg GOPATH ~/go
 set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH
+set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
 
 source $XDG_CONFIG_HOME/local
 
