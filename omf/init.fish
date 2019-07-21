@@ -1,5 +1,5 @@
 set -xg theme_color_scheme zenburn
-set -xg theme_nerd_fonts yes
+set -xg theme_nerd_fonts no
 set -xg fish_key_bindings fish_vi_key_bindings
 set -xg theme_show_exit_status no
 
@@ -25,10 +25,9 @@ set -xg NNTPSERVER nntp.aioe.org
 set -xg GOPATH ~/go
 set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH
 
-. ~/.alias
-. ~/.personal
+source $XDG_CONFIG_HOME/local
 
 eval (direnv hook fish)
 
 # OPAM configuration
-. /Users/pradipcaulagi/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+source /Users/pradipcaulagi/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
