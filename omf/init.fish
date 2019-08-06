@@ -32,3 +32,4 @@ eval (direnv hook fish)
 
 # OPAM configuration
 source /Users/pradipcaulagi/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+set -g fish_user_paths $fish_user_paths "/usr/local/sbin"
