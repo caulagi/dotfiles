@@ -9,27 +9,23 @@ set -xg LANG en_US.UTF-8
 
 set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
 
-# don't show brew git information on brew commands
+# don"t show brew git information on brew commands
 set -xg HOMEBREW_NO_GITHUB_API 1
 
 set -xg GPG_TTY (tty)
 set -xg OPENSSL_LIB_DIR /usr/local/opt/openssl/lib
 set -xg OPENSSL_INCLUDE_DIR /usr/local/opt/openssl/include
 
-# use gitignore when searching with fzf
-# export FZF_DEFAULT_COMMAND='ag -g ""'
-
 set -xg HOST_IP 192.168.65.2
-set -xg NNTPSERVER nntp.aioe.org
 
 set -xg GOPATH ~/go
-set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH
+set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH /usr/local/sbin
 set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
-
-source $XDG_CONFIG_HOME/local
 
 eval (direnv hook fish)
 
-# OPAM configuration
-source /Users/pradipcaulagi/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
-set -g fish_user_paths $fish_user_paths "/usr/local/sbin"
+source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"; end
+
+if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
