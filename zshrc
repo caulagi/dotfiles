@@ -24,6 +24,7 @@ export GPG_TTY=$(tty)
 # enable completions for docker, docker-compose
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+source <(kubectl completion zsh)
 
 # export PROJECT_ID=`gcloud config get-value project`
 #export HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2`
@@ -46,7 +47,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export WEECHAT_HOME=~/.config/weechat
 
 eval "$(direnv hook zsh)"
-[[ -f $HOME/.local/profile ]] && \. "$HOME/.local/profile"
+[[ -f "$HOME/.local/profile_zsh" ]] && source "$HOME/.local/profile_zsh"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
