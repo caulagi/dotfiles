@@ -1,21 +1,21 @@
 [user]
-	name = Pradip Caulagi
-	email = caulagi@gmail.com
-	signingkey = 036E174458FEF4BB
+    name = Pradip Caulagi
+    email = caulagi@gmail.com
+    signingkey = 036E174458FEF4BB
 [push]
-	default = simple
-	recurseSubmodules = on-demand
+    default = simple
+    recurseSubmodules = on-demand
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
+    process = git-lfs filter-process
 [commit]
-	gpgsign = true
+    gpgsign = true
 [diff]
-	submodule = log
+    submodule = log
 [status]
-	submodulesummary = 1
+    submodulesummary = 1
 
 [alias]
     ci = commit --signoff
