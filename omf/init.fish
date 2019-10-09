@@ -21,6 +21,7 @@ set -xg HOST_IP 192.168.65.2
 set -xg GOPATH ~/src/go
 set -xg PATH $GOPATH/bin $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $HOME/.cargo/bin $PATH /usr/local/sbin
 set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
+set -xg TF_LOG INFO
 
 eval (direnv hook fish)
 
