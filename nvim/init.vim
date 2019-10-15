@@ -41,6 +41,8 @@ syntax enable
 let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
 let g:winresizer_enable = 1
+let g:strip_whitespace_on_save = 1
+let g:strip_whitespace_confirm = 0
 
 " LINTING and language server
 let g:ale_fixers = {
