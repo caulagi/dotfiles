@@ -102,6 +102,7 @@ if executable('jq')
         execute "%! jq \"" . l:arg . "\""
     endfunction
     nmap <leader>jq :Jq<CR>
+    nmap <leader>jqs :Jq -S<CR>
 endif
 
 function! InsertIPdb()
