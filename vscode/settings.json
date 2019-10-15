@@ -1,24 +1,37 @@
 {
-  "window.openFoldersInNewWindow": "on",
-  "workbench.startupEditor": "newUntitledFile",
-  "git.enableCommitSigning": true,
-  "files.maxMemoryForLargeFilesMB": 8096,
-  "editor.formatOnPaste": true,
-  "editor.fontFamily": "Fira Code",
-  "editor.fontSize": 13,
-  "go.useLanguageServer": true,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Visual Studio Dark",
-  "editor.minimap.enabled": false,
-  "files.autoSave": "onFocusChange",
-  "editor.cursorStyle": "block-outline",
-  "editor.wordWrap": "on",
-  "editor.wordWrapColumn": 120,
-  "workbench.settings.editor": "json",
-  "workbench.settings.useSplitJSON": true,
-  "window.zoomLevel": 0,
-  "editor.fontLigatures": true,
-  "terminal.integrated.fontFamily": "Fira Code",
-  "terminal.integrated.fontSize": 13,
-  "terminal.external.osxExec": "/Applications/iTerm.app"
+    "vs-kubernetes": {
+        "vs-kubernetes.helm-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+        "vs-kubernetes.minikube-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+        "vs-kubernetes.draft-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+    },
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "workbench.startupEditor": "newUntitledFile",
+    "files.autoSave": "afterDelay",
+    "files.associations": {
+        "*.hcl": "terraform"
+    },
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+    "editor.minimap.enabled": false,
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "go.useLanguageServer": true,
+    "window.zoomLevel": 0,
+    "files.trimTrailingWhitespace": true,
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120
 }
