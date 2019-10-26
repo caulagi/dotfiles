@@ -31,7 +31,5 @@
     "go.useLanguageServer": true,
     "window.zoomLevel": 0,
     "files.trimTrailingWhitespace": true,
-    "editor.renderWhitespace": "all",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120
+    "editor.renderWhitespace": "all"
 }
