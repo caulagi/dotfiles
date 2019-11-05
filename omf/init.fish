@@ -17,7 +17,6 @@ set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
 set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
 set -xg XKB_DEFAULT_LAYOUT se
 
-
 if type -p go >/dev/null 2>&1
     set -xg GOPATH ~/src/go
     set -xg PATH $GOPATH/bin $PATH
@@ -27,9 +26,12 @@ if type -p yarn >/dev/null 2>&1
     set -xg PATH $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $PATH
 end
 
-
 if type -p direnv >/dev/null 2>&1
     eval (direnv hook fish)
+end
+
+if test -d $HOME/.cargo
+    set -xg PATH $HOME/.cargo/bin $PATH
 end
 
 source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
