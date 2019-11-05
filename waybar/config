@@ -6,18 +6,10 @@
 		"sway/workspaces",
 		"custom/right-arrow-dark"
 	],
-	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/right-arrow-dark"
-	],
 	"modules-right": [
+		"custom/left-arrow-dark",
+        "network",
+		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"pulseaudio",
 		"custom/left-arrow-light",
@@ -29,6 +21,9 @@
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"battery",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+        "clock",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
 		"tray"
@@ -56,19 +51,14 @@
 		"format": "{name}"
 	},
 
-	"clock#1": {
-		"format": "{:%a}",
-		"tooltip": false
-	},
-	"clock#2": {
-		"format": "{:%H:%M}",
-		"tooltip": false
-	},
-	"clock#3": {
-		"format": "{:%m-%d}",
-		"tooltip": false
-	},
-
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
@@ -107,6 +97,9 @@
 			""
 		]
 	},
+    "clock": {
+        "format": "{:%d-%b %R}"
+    },
 	"tray": {
 		"icon-size": 20
 	}
