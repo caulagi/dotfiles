@@ -203,6 +203,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+input type:touchpad {
+    left_handed enabled
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+}
+
 #
 # Status Bar:
 #
