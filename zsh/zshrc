@@ -1,16 +1,31 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+#set -xe
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+export ADOTDIR=$HOME/.config/antigen
+source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
 
-bindkey "^E" vi-end-of-line
+zstyle ':prezto:*:*' color 'yes'
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:prompt' theme 'steeef'
+zstyle ':prezto:module:python' autovenv 'yes'
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'editor' \
+  'history' \
+  'git' \
+  'prompt' \
+  'python'
+
+antigen use prezto
+
+antigen bundle sorin-ionescu/prezto modules/environment
+antigen bundle sorin-ionescu/prezto modules/editor
+antigen bundle sorin-ionescu/prezto modules/history
+antigen bundle sorin-ionescu/prezto modules/git
+antigen bundle sorin-ionescu/prezto modules/prompt
+antigen bundle sorin-ionescu/prezto modules/python
+antigen bundle zsh-users/zsh-autosuggestions
+
+antigen apply
 
 source ~/.cargo/env
 
@@ -38,10 +53,10 @@ export GOPATH=~/src/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:$HOME/.linkerd2/bin
 
-source ~/.zsh/completion/*
-source ~/.zsh/completion/aws_zsh_completer.sh
-source ~/.zsh/completion/_helm
-source ~/.zsh/completion/_kops
+# source ~/.zsh/completion/*
+# source ~/.zsh/completion/aws_zsh_completer.sh
+# source ~/.zsh/completion/_helm
+# source ~/.zsh/completion/_kops
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export WEECHAT_HOME=~/.config/weechat
