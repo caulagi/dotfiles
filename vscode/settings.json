@@ -31,5 +31,7 @@
     "go.useLanguageServer": true,
     "window.zoomLevel": 0,
     "files.trimTrailingWhitespace": true,
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false
 }
