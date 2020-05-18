@@ -1,6 +1,6 @@
-set ai
+set autoindent
 set tabstop=4
-set ic
+set ignorecase
 set shiftwidth=4
 set expandtab
 set undofile
@@ -37,6 +37,9 @@ Plug 'airblade/vim-rooter'
 call plug#end()
 
 syntax enable
+
+au FileType yaml set shiftwidth=2 tabstop=2
+au FileType json set shiftwidth=2 tabstop=2
 
 let g:pysmell_matcher='camel-case'
 let g:rbpt_max = 16
@@ -121,7 +124,8 @@ let g:LanguageClient_serverCommands = {
     \ 'reason': ['ocaml-language-server', '--stdio'],
     \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ 'python': ['pyls'],
-    \ 'javascript': ['javascript-typescript-langserver']
+    \ 'javascript': ['javascript-typescript-langserver'],
+    \ 'yaml': ['yaml-language-server', '--stdio'],
     \ }
 
 " Automatically start language servers.
