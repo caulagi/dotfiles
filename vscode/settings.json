@@ -33,5 +33,7 @@
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "all",
     "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.activityBar.visible": true,
+    "explorer.confirmDelete": false
 }
