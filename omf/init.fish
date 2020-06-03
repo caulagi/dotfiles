@@ -1,4 +1,4 @@
-set -xg theme_color_scheme zenburn
+set -xg theme_color_scheme gruvbox
 set -xg theme_nerd_fonts no
 set -xg fish_key_bindings fish_vi_key_bindings
 set -xg theme_show_exit_status no
