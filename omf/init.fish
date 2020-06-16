@@ -15,6 +15,7 @@ set -xg TF_LOG INFO
 set -xg TF_LOG_PATH /tmp/terraform.log
 set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
 set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
+set -xg PATH ~/bin $PATH
 
 if type -p go >/dev/null 2>&1
     set -xg GOPATH ~/src/go
