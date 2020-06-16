@@ -38,3 +38,4 @@ source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
 if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"; end
 
 if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
+if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end

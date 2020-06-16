@@ -63,6 +63,7 @@ export WEECHAT_HOME=~/.config/weechat
 
 eval "$(direnv hook zsh)"
 [[ -f "$HOME/.local/profile_zsh" ]] && source "$HOME/.local/profile_zsh"
+[[ -f "$HOME/.local/alias" ]] && source "$HOME/.local/alias"
 
 # tabtab source for serverless package
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
