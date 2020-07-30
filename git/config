@@ -21,3 +21,5 @@
     ci = commit --signoff
 [pull]
 	ff = only
+[core]
+	ignorecase = false
