@@ -40,3 +40,11 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/g
 
 if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
 if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end
+
+if [ -d "$HOME/Library/Android/sdk" ];
+    set -xg ANDROID_HOME "$HOME/Library/Android/sdk"
+    set -xg PATH $ANDROID_HOME/emulator $PATH
+    set -xg PATH $ANDROID_HOME/tools $PATH
+    set -xg PATH $ANDROID_HOME/tools/bin $PATH
+    set -xg PATH $ANDROID_HOME/platform-tools $PATH
+end
