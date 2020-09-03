@@ -48,3 +48,5 @@ if [ -d "$HOME/Library/Android/sdk" ];
     set -xg PATH $ANDROID_HOME/tools/bin $PATH
     set -xg PATH $ANDROID_HOME/platform-tools $PATH
 end
+
+zoxide init fish | source
