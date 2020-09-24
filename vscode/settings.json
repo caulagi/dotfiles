@@ -39,5 +39,16 @@
     "workbench.activityBar.visible": true,
     "explorer.confirmDelete": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[python]": {
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true
+    },
+    "python.formatting.provider": "black",
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore = E302",
+        "--max-line-length = 119"
+    ],
+    "python.testing.unittestEnabled": true
 }
