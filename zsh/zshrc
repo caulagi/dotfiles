@@ -89,6 +89,5 @@ then
 fi
 
 if type zoxide > /dev/null; then
-    echo "zoxide"
     eval "$(zoxide init zsh)"
 fi
