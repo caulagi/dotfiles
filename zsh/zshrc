@@ -72,8 +72,15 @@ then
     source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
 fi
 
-[[ -f "$HOME/.local/profile_zsh" ]] && source "$HOME/.local/profile_zsh"
-[[ -f "$HOME/.local/alias" ]] && source "$HOME/.local/alias"
+if [[ -f "$HOME/.local/profile_zsh" ]]
+then
+    source "$HOME/.local/profile_zsh"
+fi
+
+if [[ -f "$HOME/.local/alias" ]]
+then
+    source "$HOME/.local/alias"
+fi
 
 [[ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
 
