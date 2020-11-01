@@ -67,6 +67,11 @@ if type direnv > /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
+then
+    source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
+fi
+
 [[ -f "$HOME/.local/profile_zsh" ]] && source "$HOME/.local/profile_zsh"
 [[ -f "$HOME/.local/alias" ]] && source "$HOME/.local/alias"
 
