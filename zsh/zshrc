@@ -70,6 +70,7 @@ fi
 if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
 then
     source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
+    source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
 fi
 
 if [[ -f "$HOME/.local/profile_zsh" ]]
@@ -81,8 +82,6 @@ if [[ -f "$HOME/.local/alias" ]]
 then
     source "$HOME/.local/alias"
 fi
-
-[[ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]] && . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
 
 export NVM_DIR="$HOME"/.config/nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
