@@ -94,9 +94,9 @@ bindsym $mod+Control+3 exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | sele
 bindsym $mod+Control+l exec "swaylock"
 
 # volume control
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioMute exec pactl set-sink-volume 0 1
+bindsym XF86AudioLowerVolume exec pamixer --decrease 3
+bindsym XF86AudioRaiseVolume exec pamixer --increase 3 --allow-boost
+bindsym XF86AudioMute exec pamixer --toggle-mute
 
 #
 # Moving around:
