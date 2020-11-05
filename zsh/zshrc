@@ -54,11 +54,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 source <(kubectl completion zsh)
-source <(clusterctl completion zsh)
-# source ~/.zsh/completion/*
-# source ~/.zsh/completion/aws_zsh_completer.sh
-# source ~/.zsh/completion/_helm
-# source ~/.zsh/completion/_kops
+if type clusterctl > /dev/null; then
+    source <(clusterctl completion zsh)
+fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export WEECHAT_HOME=~/.config/weechat
