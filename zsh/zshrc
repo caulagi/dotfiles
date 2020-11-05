@@ -36,12 +36,6 @@ export GPG_TTY=$(tty)
 # OPAM configuration
 . /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# enable completions for docker, docker-compose
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-source <(kubectl completion zsh)
-source <(clusterctl completion zsh)
-
 # export PROJECT_ID=`gcloud config get-value project`
 #export HOST_IP=`ifconfig en0 | grep inet | grep -v inet6 | cut -d ' ' -f2`
 # for cases where we can't use docker.for.mac.localhost in containers
@@ -56,6 +50,11 @@ export PATH=$PATH:$HOME/.linkerd2/bin
 export PATH=$PATH:~/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# enable completions for docker, docker-compose
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+source <(kubectl completion zsh)
+source <(clusterctl completion zsh)
 # source ~/.zsh/completion/*
 # source ~/.zsh/completion/aws_zsh_completer.sh
 # source ~/.zsh/completion/_helm
