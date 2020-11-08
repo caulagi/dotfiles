@@ -57,6 +57,15 @@ source <(kubectl completion zsh)
 if type clusterctl > /dev/null; then
     source <(clusterctl completion zsh)
 fi
+if type rustup > /dev/null; then
+    rustup completions zsh > ~/.zsh/completion/_rustup
+fi
+if type kops > /dev/null; then
+    source <(kops completion zsh)
+fi
+if type helm > /dev/null; then
+    source <(helm completion zsh)
+fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export WEECHAT_HOME=~/.config/weechat
