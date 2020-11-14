@@ -32,6 +32,7 @@ source ~/.cargo/env
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
+export EDITOR=nvim
 
 # OPAM configuration
 . /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
