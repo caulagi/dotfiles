@@ -66,6 +66,9 @@ fi
 if type helm > /dev/null; then
     source <(helm completion zsh)
 fi
+if type kind > /dev/null; then
+    source <(kind completion zsh)
+fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export WEECHAT_HOME=~/.config/weechat
