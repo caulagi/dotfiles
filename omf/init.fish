@@ -3,6 +3,7 @@ set -xg theme_nerd_fonts no
 set -xg fish_key_bindings fish_vi_key_bindings
 set -xg theme_show_exit_status no
 
+set -xg STARSHIP_SHELL fish
 set -xg EDITOR nvim
 set -xg GPG_TTY (tty)
 set -xg HOMEBREW_NO_GITHUB_API 1 # don"t show brew git information on brew commands
@@ -57,3 +58,5 @@ set TTY1 (tty)
 if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
     exec sway
 end
+
+starship init fish | source

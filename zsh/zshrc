@@ -5,7 +5,6 @@ source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
 
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:prompt' theme 'steeef'
 zstyle ':prezto:module:python' autovenv 'yes'
 zstyle ':prezto:load' pmodule \
   'environment' \
@@ -33,6 +32,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 export EDITOR=nvim
+export STARSHIP_SHELL=zsh
 
 # OPAM configuration
 . /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
@@ -109,3 +109,5 @@ fi
 if type zoxide > /dev/null; then
     eval "$(zoxide init zsh)"
 fi
+
+eval "$(starship init zsh)"
