@@ -59,6 +59,7 @@ if type clusterctl > /dev/null; then
     source <(clusterctl completion zsh)
 fi
 if type rustup > /dev/null; then
+    rm ~/.zsh/completion/_rustup
     rustup completions zsh > ~/.zsh/completion/_rustup
 fi
 if type kops > /dev/null; then
