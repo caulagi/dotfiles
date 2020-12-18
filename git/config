@@ -20,6 +20,6 @@
 [alias]
     ci = commit --signoff
 [pull]
-	ff = only
+    ff = only
 [core]
-	ignorecase = false
+    ignorecase = false
