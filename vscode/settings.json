@@ -50,5 +50,7 @@
         "--ignore = E302",
         "--max-line-length = 119"
     ],
-    "python.testing.unittestEnabled": true
+    "python.testing.unittestEnabled": true,
+    "yaml.schemaStore.enable": true,
+    "yaml.validate": true
 }
