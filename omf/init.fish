@@ -58,3 +58,8 @@ if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
 end
 
 starship init fish | source
+
+if [ -d "/usr/local/opt/ruby" ];
+    set -xg PATH "/usr/local/opt/ruby/bin" $PATH
+    set -xg PATH "$HOME/.gem/ruby/3.0.0/bin" $PATH
+end

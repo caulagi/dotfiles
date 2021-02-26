@@ -112,3 +112,9 @@ if type zoxide > /dev/null; then
 fi
 
 eval "$(starship init zsh)"
+
+if [[ -d "/usr/local/opt/ruby" ]]
+then
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+    export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+fi
