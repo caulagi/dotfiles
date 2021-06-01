@@ -5,11 +5,12 @@
         "vs-kubernetes.draft-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/draft/darwin-amd64/draft"
     },
     "editor.fontLigatures": true,
-    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace",
     "workbench.startupEditor": "newUntitledFile",
     "files.autoSave": "afterDelay",
     "files.associations": {
-        "*.hcl": "terraform"
+        "*.hcl": "terraform",
+        "*.j2": "python"
     },
     "terraform.indexing": {
         "enabled": false,
@@ -31,7 +32,6 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "go.useLanguageServer": true,
-    "window.zoomLevel": 0,
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "all",
     "workbench.editor.enablePreview": false,
@@ -52,5 +52,13 @@
     ],
     "python.testing.unittestEnabled": true,
     "yaml.schemaStore.enable": true,
-    "yaml.validate": true
+    "yaml.validate": true,
+    "editor.find.addExtraSpaceOnTop": false,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }
