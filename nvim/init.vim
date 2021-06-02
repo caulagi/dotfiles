@@ -119,6 +119,10 @@ let g:ackprg = 'rg --vimgrep --no-heading'
 " configuration for language server
 set hidden
 
+autocmd BufNewFile,BufRead *.tf set ft=terraform syntax=terraform
+autocmd BufNewFile,BufRead *.tfvars set ft=terraform syntax=terraform
+autocmd BufNewFile,BufRead *.hcl set ft=terraform syntax=terraform
+
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'reason': ['ocaml-language-server', '--stdio'],
@@ -126,6 +130,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'javascript': ['javascript-typescript-langserver'],
     \ 'yaml': ['yaml-language-server', '--stdio'],
+    \ 'terraform': ['terraform-ls', 'serve'],
     \ }
 
 " Automatically start language servers.
