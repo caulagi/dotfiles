@@ -10,7 +10,8 @@
     "files.autoSave": "afterDelay",
     "files.associations": {
         "*.hcl": "terraform",
-        "*.j2": "python"
+        "*.j2": "python",
+        "*.tfvars": "terraform"
     },
     "terraform.indexing": {
         "enabled": false,
@@ -27,11 +28,9 @@
             "serve"
         ]
     },
-    "editor.minimap.enabled": false,
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
-    "go.useLanguageServer": true,
     "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "all",
     "workbench.editor.enablePreview": false,
@@ -55,10 +54,14 @@
     "yaml.validate": true,
     "editor.find.addExtraSpaceOnTop": false,
     "go.toolsManagement.autoUpdate": true,
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ]
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform"
+    },
+    "redhat.telemetry.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "docker.showStartPage": false,
+    "editor.minimap.enabled": false
 }
