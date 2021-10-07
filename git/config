@@ -25,3 +25,5 @@
     ignorecase = false
 [init]
     defaultBranch = main
+[includeIf "gitdir:~/evolution/"]
+	path = ~/evolution/.gitconfig
