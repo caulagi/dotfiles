@@ -31,7 +31,6 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
-    "files.trimTrailingWhitespace": true,
     "editor.renderWhitespace": "all",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -63,5 +62,13 @@
     "redhat.telemetry.enabled": false,
     "explorer.confirmDragAndDrop": false,
     "docker.showStartPage": false,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "files.trimTrailingWhitespace": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": false
+    }
 }

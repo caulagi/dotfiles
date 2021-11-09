@@ -34,6 +34,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'prettier/vim-prettier', {
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'airblade/vim-rooter'
+Plug 'github/copilot.vim'
 call plug#end()
 
 syntax enable
