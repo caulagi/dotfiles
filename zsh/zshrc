@@ -1,5 +1,6 @@
 #set -xe
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export ADOTDIR=$HOME/.config/antigen
 source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
 
