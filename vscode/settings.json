@@ -70,5 +70,6 @@
         "yaml": true,
         "plaintext": true,
         "markdown": true
-    }
+    },
+    "workbench.iconTheme": "vscode-icons"
 }
