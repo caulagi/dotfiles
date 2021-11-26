@@ -7,11 +7,11 @@ On Mac, `settings.json` should be copied to `~/Library/Application\ Support/Code
 **Export**
 
 ```
-code --list-extensions > vscode-extensions.list
+code --list-extensions > vscode/extensions.list
 ```
 
 **Import**
 
 ```
-cat vscode-extensions.list | xargs -L 1 code --install-extension
+cat vscode/extensions.list | xargs -L 1 code --install-extension
 ```

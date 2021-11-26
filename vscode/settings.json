@@ -71,5 +71,5 @@
         "plaintext": true,
         "markdown": true
     },
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "material-icon-theme"
 }
