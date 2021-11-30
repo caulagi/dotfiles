@@ -38,6 +38,7 @@ export GPG_TTY=$(tty)
 export VISUAL=nvim
 export EDITOR=nvim
 export STARSHIP_SHELL=zsh
+export AWS_PAGER=""
 
 # OPAM configuration
 . /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
