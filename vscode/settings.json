@@ -42,6 +42,9 @@
         "editor.formatOnPaste": false,
         "editor.formatOnSave": true
     },
+    "[json]": {
+        "editor.tabSize": 2
+     },
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
@@ -72,5 +75,6 @@
         "markdown": true
     },
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "window.zoomLevel": 1
 }
