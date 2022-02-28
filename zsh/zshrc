@@ -60,7 +60,16 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # enable completions for docker, docker-compose
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
-source <(kubectl completion zsh)
+
+if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
+then
+    source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
+    source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
+fi
+
+if type kubectl > /dev/null; then
+    source <(kubectl completion zsh)
+fi
 if type clusterctl > /dev/null; then
     source <(clusterctl completion zsh)
 fi
@@ -83,12 +92,6 @@ export WEECHAT_HOME=~/.config/weechat
 
 if type direnv > /dev/null; then
     eval "$(direnv hook zsh)"
-fi
-
-if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
-then
-    source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
-    source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
 fi
 
 if [[ -f "$HOME/.local/profile_zsh" ]]
