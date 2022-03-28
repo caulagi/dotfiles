@@ -2,4 +2,4 @@
 
 Configuration of my setup for osx/archlinux.
 
-![vanity-image](https://user-images.githubusercontent.com/222507/160400971-71ab414c-4023-4402-9ce0-5109355cbc67.png)
+![vanity-image](https://user-images.githubusercontent.com/222507/160402608-994c0f66-0149-4084-b116-bb5411e47ed7.png)
