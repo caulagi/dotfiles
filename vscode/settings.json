@@ -75,6 +75,5 @@
         "markdown": true
     },
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
-    "window.zoomLevel": 1
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }
