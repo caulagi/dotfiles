@@ -2,7 +2,7 @@ local wezterm = require 'wezterm';
 
 return {
   color_scheme = "Gruvbox Dark",
-  font = wezterm.font("FiraCode Nerd Font"),
+  font = wezterm.font("Fira Code"),
   font_size = 14,
   audible_bell = "Disabled",
   scrollback_lines = 100000,
