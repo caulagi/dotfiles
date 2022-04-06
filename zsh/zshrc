@@ -125,6 +125,7 @@ if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
 then
     source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
     source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"
+    export PROJECT_ID=$(gcloud config get-value project)
 fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
