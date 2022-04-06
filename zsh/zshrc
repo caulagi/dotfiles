@@ -10,6 +10,7 @@ source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
 zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:python' autovenv 'yes'
+zstyle ':prezto:module:utility' safe-ops no
 zstyle ':prezto:load' pmodule \
   'environment' \
   'editor' \
