@@ -17,6 +17,10 @@ set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
 set -xg PATH ~/bin $PATH
 set -gx PATH $PATH $HOME/.krew/bin
 
+if test -f /opt/homebrew/bin/brew
+    set -xg PATH /opt/homebrew/bin $PATH
+end
+
 if type -p go >/dev/null 2>&1
     set -xg GOPATH ~/src/go
     set -xg PATH $GOPATH/bin $PATH
