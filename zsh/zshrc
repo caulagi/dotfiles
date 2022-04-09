@@ -7,18 +7,6 @@ fi
 export ADOTDIR=$HOME/.config/antigen
 source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
 
-zstyle ':prezto:*:*' color 'yes'
-zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:python' autovenv 'yes'
-zstyle ':prezto:module:utility' safe-ops no
-zstyle ':prezto:load' pmodule \
-  'environment' \
-  'editor' \
-  'history' \
-  'git' \
-  'prompt' \
-  'python'
-
 antigen use prezto
 
 antigen bundle sorin-ionescu/prezto modules/environment
