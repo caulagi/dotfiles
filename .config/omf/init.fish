@@ -11,7 +11,6 @@ set -xg LANG en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg TF_LOG INFO
 set -xg TF_LOG_PATH /tmp/terraform.log
-set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
 set -xg PATH ~/bin $PATH
 set -gx PATH $PATH $HOME/.krew/bin
 
@@ -42,6 +41,10 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/g
 
 if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
 if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end
+
+if [ -f $HOME/Documents/venv/bin/activate.fish ]
+    source $HOME/Documents/venv/bin/activate.fish
+end
 
 if [ -d "$HOME/Library/Android/sdk" ];
     set -xg ANDROID_HOME "$HOME/Library/Android/sdk"
