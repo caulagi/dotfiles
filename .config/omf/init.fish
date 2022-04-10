@@ -7,13 +7,11 @@ set -xg STARSHIP_SHELL fish
 set -xg EDITOR nvim
 set -xg GPG_TTY (tty)
 set -xg HOMEBREW_NO_GITHUB_API 1 # don"t show brew git information on brew commands
-set -xg HOST_IP 192.168.65.2
 set -xg LANG en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg TF_LOG INFO
 set -xg TF_LOG_PATH /tmp/terraform.log
 set -xg VIRTUAL_ENV_DISABLE_PROMPT 1
-set -xg WEECHAT_HOME $XDG_CONFIG_HOME/weechat
 set -xg PATH ~/bin $PATH
 set -gx PATH $PATH $HOME/.krew/bin
 
