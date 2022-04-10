@@ -12,6 +12,14 @@ style = "bold red"
 threshold = 90
 style = "bold yellow"
 
-[env_var]
-variable = "STARSHIP_SHELL"
+[kubernetes]
+disabled = false
 
+[golang]
+disabled = false
+
+[shell]
+disabled = false
+
+[python]
+disabled = false
