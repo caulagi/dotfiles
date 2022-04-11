@@ -42,10 +42,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/g
 if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
 if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end
 
-if [ -f $HOME/Documents/venv/bin/activate.fish ]
-    source $HOME/Documents/venv/bin/activate.fish
-end
-
 if [ -d "$HOME/Library/Android/sdk" ];
     set -xg ANDROID_HOME "$HOME/Library/Android/sdk"
     set -xg PATH $ANDROID_HOME/emulator $PATH
@@ -68,3 +64,8 @@ if [ -d "/usr/local/opt/ruby" ];
     set -xg PATH "/usr/local/opt/ruby/bin" $PATH
     set -xg PATH "$HOME/.gem/ruby/3.0.0/bin" $PATH
 end
+
+if [ -f $HOME/Documents/venv/bin/activate.fish ]
+    source $HOME/Documents/venv/bin/activate.fish
+end
+
