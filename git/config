@@ -25,7 +25,9 @@
     ignorecase = false
 [init]
     defaultBranch = main
+[includeIf "gitdir:~/voi/"]
+    path = ~/voi/.gitconfig
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
 [pager]
-	branch = false
+    branch = false
