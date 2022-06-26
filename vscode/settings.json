@@ -2,7 +2,8 @@
     "vs-kubernetes": {
         "vs-kubernetes.helm-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/helm/darwin-amd64/helm",
         "vs-kubernetes.minikube-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-        "vs-kubernetes.draft-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+        "vs-kubernetes.draft-path": "/Users/pradip.caulagi/.vs-kubernetes/tools/draft/darwin-amd64/draft",
+        "vs-kubernetes.crd-code-completion": "enabled"
     },
     "editor.fontLigatures": true,
     "editor.fontFamily": "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace",
@@ -76,5 +77,6 @@
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Gruvbox Dark Medium",
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "editor.multiCursorModifier": "ctrlCmd"
 }
