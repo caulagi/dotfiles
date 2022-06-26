@@ -28,7 +28,7 @@ if type -p yarn >/dev/null 2>&1
 end
 
 if type -p direnv >/dev/null 2>&1
-    eval (direnv hook fish)
+    direnv hook fish | source
 end
 
 if test -d $HOME/.cargo
