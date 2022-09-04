@@ -23,12 +23,6 @@
             "**/.terraform/**/*"
         ]
     },
-    "terraform.languageServer": {
-        "external": true,
-        "args": [
-            "serve"
-        ]
-    },
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
@@ -75,8 +69,9 @@
         "plaintext": true,
         "markdown": true
     },
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Gruvbox Dark Medium",
     "editor.fontSize": 13,
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "terraform.languageServer.enable": true
 }
