@@ -5,43 +5,18 @@
     "sway/workspaces",
     "custom/right-arrow-dark"
   ],
+  "modules-center": ["sway/window"],
   "modules-right": [
-    "custom/left-arrow-dark",
     "network",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "pulseaudio",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "memory",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "cpu",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "battery",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "clock",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "tray"
   ],
-  "custom/left-arrow-dark": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left-arrow-light": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right-arrow-dark": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right-arrow-light": {
-    "format": "",
-    "tooltip": false
+  "sway/window": {
+    "max-length": 50
   },
   "sway/workspaces": {
     "disable-scroll": true,
