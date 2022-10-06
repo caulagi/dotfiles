@@ -7,6 +7,7 @@ golang.go
 hashicorp.terraform
 jaredly.reason-vscode
 jdinhlife.gruvbox
+magicstack.MagicPython
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.python
@@ -17,5 +18,6 @@ ms-toolsai.jupyter-renderers
 PKief.material-icon-theme
 redhat.vscode-commons
 redhat.vscode-yaml
+rust-lang.rust-analyzer
 timonwong.shellcheck
 vscode-icons-team.vscode-icons
