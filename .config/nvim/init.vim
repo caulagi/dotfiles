@@ -30,7 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'reasonml-editor/vim-reason-plus'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'prettier/vim-prettier', {
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'airblade/vim-rooter'
@@ -137,9 +137,8 @@ let g:LanguageClient_serverCommands = {
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nmap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nmap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nmap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
