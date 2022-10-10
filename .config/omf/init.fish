@@ -11,20 +11,21 @@ set -xg LANG en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg TF_LOG INFO
 set -xg TF_LOG_PATH /tmp/terraform.log
-set -xg PATH ~/bin $PATH
-set -gx PATH $PATH $HOME/.krew/bin
+fish_add_path ~/bin
+fish_add_path $HOME/.krew/bin
 
 if test -f /opt/homebrew/bin/brew
-    set -xg PATH /opt/homebrew/bin $PATH
+    fish_add_path /opt/homebrew/bin
 end
 
 if type -p go >/dev/null 2>&1
     set -xg GOPATH ~/src/go
-    set -xg PATH $GOPATH/bin $PATH
+    fish_add_path $GOPATH/bin
 end
 
 if type -p yarn >/dev/null 2>&1
-    set -xg PATH $HOME/.yarn/bin $HOME/.config/yarn/global/node_modules/.bin $PATH
+    fish_add_path $HOME/.yarn/bin
+    fish_add_path $HOME/.config/yarn/global/node_modules/.bin
 end
 
 if type -p direnv >/dev/null 2>&1
@@ -32,7 +33,7 @@ if type -p direnv >/dev/null 2>&1
 end
 
 if test -d $HOME/.cargo
-    set -xg PATH $HOME/.cargo/bin $PATH
+    fish_add_path $HOME/.cargo/bin
 end
 
 source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
@@ -44,10 +45,10 @@ if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end
 
 if [ -d "$HOME/Library/Android/sdk" ];
     set -xg ANDROID_HOME "$HOME/Library/Android/sdk"
-    set -xg PATH $ANDROID_HOME/emulator $PATH
-    set -xg PATH $ANDROID_HOME/tools $PATH
-    set -xg PATH $ANDROID_HOME/tools/bin $PATH
-    set -xg PATH $ANDROID_HOME/platform-tools $PATH
+    fish_add_path $ANDROID_HOME/emulator
+    fish_add_path $ANDROID_HOME/tools
+    fish_add_path $ANDROID_HOME/tools/bin
+    fish_add_path $ANDROID_HOME/platform-tools
 end
 
 zoxide init fish | source
@@ -62,13 +63,13 @@ end
 starship init fish | source
 
 if [ -d "/usr/local/opt/ruby" ];
-    set -xg PATH "/usr/local/opt/ruby/bin" $PATH
-    set -xg PATH "$HOME/.gem/ruby/3.0.0/bin" $PATH
+    fish_add_path "/usr/local/opt/ruby/bin"
+    fish_add_path "$HOME/.gem/ruby/3.0.0/bin"
 end
 
 # add poetry to path
 if [ -d $HOME/.local/bin ]
-    set -xg PATH $HOME/.local/bin $PATH
+    fish_add_path $HOME/.local/bin
 end
 
 if [ -f $HOME/Documents/venv/bin/activate.fish ]
