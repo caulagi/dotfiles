@@ -38,7 +38,13 @@ end
 
 source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
 
-if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]; . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"; end
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]
+    set -Ux PYENV_ROOT $HOME/.local/share/pyenv
+    fish_add_path $PYENV_ROOT/bin
+    pyenv init - | source
+    pyenv shell 3.10.7
+    . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
+end
 
 if [ -f "$HOME/.local/profile" ]; source "$HOME/.local/profile"; end
 if [ -f "$HOME/.local/alias" ]; source "$HOME/.local/alias"; end
@@ -72,6 +78,3 @@ if [ -d $HOME/.local/bin ]
     fish_add_path $HOME/.local/bin
 end
 
-if [ -f $HOME/Documents/venv/bin/activate.fish ]
-    source $HOME/Documents/venv/bin/activate.fish
-end
