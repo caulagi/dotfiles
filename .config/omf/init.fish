@@ -66,7 +66,11 @@ if [ -d "/usr/local/opt/ruby" ];
     set -xg PATH "$HOME/.gem/ruby/3.0.0/bin" $PATH
 end
 
+# add poetry to path
+if [ -d $HOME/.local/bin ]
+    set -xg PATH $HOME/.local/bin $PATH
+end
+
 if [ -f $HOME/Documents/venv/bin/activate.fish ]
     source $HOME/Documents/venv/bin/activate.fish
 end
-
