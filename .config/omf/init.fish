@@ -11,8 +11,6 @@ set -xg LANG en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 set -xg TF_LOG INFO
 set -xg TF_LOG_PATH /tmp/terraform.log
-fish_add_path ~/bin
-fish_add_path $HOME/.krew/bin
 
 if test -f /opt/homebrew/bin/brew
     fish_add_path /opt/homebrew/bin
@@ -73,8 +71,6 @@ if [ -d "/usr/local/opt/ruby" ];
     fish_add_path "$HOME/.gem/ruby/3.0.0/bin"
 end
 
-# add poetry to path
 if [ -d $HOME/.local/bin ]
     fish_add_path $HOME/.local/bin
 end
-
