@@ -5,7 +5,10 @@ if [[ -f "/opt/homebrew/bin/brew" ]]; then
 fi
 
 export ADOTDIR=$HOME/.config/antigen
-source "${ZDOTDIR:-$HOME}/.zsh/antigen.zsh"
+source "${ZDOTDIR:-$HOME}/antigen.zsh"
+
+COMPLETION_DIR=$ZDOTDIR/completion
+mkdir -pv $COMPLETION_DIR
 
 antigen use prezto
 
@@ -39,7 +42,7 @@ export PATH=$PATH:~/bin
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # enable completions for docker, docker-compose
-fpath=(~/.zsh/completion $fpath)
+fpath=($COMPLETION_DIR $fpath)
 autoload -Uz compinit && compinit -i
 
 
@@ -50,8 +53,8 @@ if type clusterctl > /dev/null; then
     source <(clusterctl completion zsh)
 fi
 if type rustup > /dev/null; then
-    rm ~/.zsh/completion/_rustup
-    rustup completions zsh > ~/.zsh/completion/_rustup
+    rm $COMPLETION_DIR/_rustup
+    rustup completions zsh > $COMPLETION_DIR/_rustup
 fi
 if type kops > /dev/null; then
     source <(kops completion zsh)
@@ -118,3 +121,13 @@ then
 fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [[ ! -f "$COMPLETION_DIR/_pass" ]]
+then
+    curl -L https://git.zx2c4.com/password-store/plain/src/completion/pass.zsh-completion > $COMPLETION_DIR/_pass
+fi
+
+if [[ ! -f "$COMPLETION_DIR/aws_zsh_completer.sh" ]]
+then
+    curl -L https://raw.githubusercontent.com/aws/aws-cli/develop/bin/aws_zsh_completer.sh > $COMPLETION_DIR/aws_zsh_completer.sh
+fi

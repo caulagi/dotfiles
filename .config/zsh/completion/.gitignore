@@ -1,9 +1,0 @@
-_docker
-_docker-compose
-_helm
-_kind
-_kops
-_pass
-_pipenv
-_rustup
-aws_zsh_completer.sh
