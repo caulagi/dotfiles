@@ -36,15 +36,10 @@ export AWS_PAGER=""
 . /Users/pcaulagi/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 export GOPATH=~/src/go
-export PATH=$GOPATH/bin:$PATH
-export PATH=$PATH:$HOME/.linkerd2/bin
-export PATH=$PATH:~/bin
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # enable completions for docker, docker-compose
 fpath=($COMPLETION_DIR $fpath)
 autoload -Uz compinit && compinit -i
-
 
 if type kubectl > /dev/null; then
     source <(kubectl completion zsh)
@@ -66,7 +61,7 @@ if type kind > /dev/null; then
     source <(kind completion zsh)
 fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+path+=("$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH")
 export WEECHAT_HOME=~/.config/weechat
 
 if type direnv > /dev/null; then
@@ -89,10 +84,10 @@ export NVM_DIR="$HOME"/.config/nvm
 if [[ -d "$HOME/Library/Android/sdk" ]]
 then
     export ANDROID_HOME=$HOME/Library/Android/sdk
-    export PATH=$PATH:$ANDROID_HOME/emulator
-    export PATH=$PATH:$ANDROID_HOME/tools
-    export PATH=$PATH:$ANDROID_HOME/tools/bin
-    export PATH=$PATH:$ANDROID_HOME/platform-tools
+    path+=$ANDROID_HOME/emulator
+    path+=$ANDROID_HOME/tools
+    path+=$ANDROID_HOME/tools/bin
+    path+=$ANDROID_HOME/platform-tools
 fi
 
 if type zoxide > /dev/null; then
@@ -103,8 +98,8 @@ eval "$(starship init zsh)"
 
 if [[ -d "/usr/local/opt/ruby" ]]
 then
-    export PATH="/usr/local/opt/ruby/bin:$PATH"
-    export PATH="$HOME/.gem/ruby/3.0.0/bin:$PATH"
+    path+="/usr/local/opt/ruby/bin"
+    path+="$HOME/.gem/ruby/3.0.0/bin"
 fi
 
 # handle differences in path between osx amd and arm setup
