@@ -74,3 +74,8 @@ end
 if [ -d $HOME/.local/bin ]
     fish_add_path $HOME/.local/bin
 end
+
+if [ -d $HOME/.krew ]
+    fish_add_path $HOME/.krew/bin
+end
+

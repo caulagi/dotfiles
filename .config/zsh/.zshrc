@@ -126,3 +126,8 @@ if [[ ! -f "$COMPLETION_DIR/aws_zsh_completer.sh" ]]
 then
     curl -L https://raw.githubusercontent.com/aws/aws-cli/develop/bin/aws_zsh_completer.sh > $COMPLETION_DIR/aws_zsh_completer.sh
 fi
+
+if [[ -d "$HOME/.krew" ]]
+then
+    path+="$HOME/.krew/bin"
+fi
