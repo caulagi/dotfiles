@@ -22,7 +22,10 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
 
-source ~/.cargo/env
+if [[ -f "$HOME/.cargo/env" ]]
+then
+    source ~/.cargo/env
+fi
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -130,4 +133,9 @@ fi
 if [[ -d "$HOME/.krew" ]]
 then
     path+="$HOME/.krew/bin"
+fi
+
+if [[ -d "/opt/homebrew/opt/libpq/bin" ]]
+then
+    path+="/opt/homebrew/opt/libpq/bin"
 fi
