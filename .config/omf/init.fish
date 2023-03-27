@@ -14,6 +14,7 @@ set -xg TF_LOG_PATH /tmp/terraform.log
 
 if test -f /opt/homebrew/bin/brew
     fish_add_path /opt/homebrew/bin
+    fish_add_path /opt/homebrew/sbin
 end
 
 if type -p go >/dev/null 2>&1
