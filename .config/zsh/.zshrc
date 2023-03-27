@@ -105,12 +105,6 @@ then
     path+="$HOME/.gem/ruby/3.0.0/bin"
 fi
 
-# handle differences in path between osx amd and arm setup
-if type aws_completer > /dev/null; then
-    aws_completer_path=$(which aws_completer)
-    complete -C $aws_completer_path aws
-fi
-
 if [[ -d "$HOME/Downloads/google-cloud-sdk" ]]
 then
     source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"
