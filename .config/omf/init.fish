@@ -83,3 +83,5 @@ end
 if [ -d /opt/homebrew/opt/libpq/bin ]
     fish_add_path /opt/homebrew/opt/libpq/bin
 end
+
+set -xg KIND_EXPERIMENTAL_PROVIDER podman

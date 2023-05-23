@@ -133,3 +133,5 @@ if [[ -d "/opt/homebrew/opt/libpq/bin" ]]
 then
     path+="/opt/homebrew/opt/libpq/bin"
 fi
+
+export KIND_EXPERIMENTAL_PROVIDER=podman
