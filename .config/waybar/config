@@ -5,7 +5,9 @@
     "sway/workspaces",
     "custom/right-arrow-dark"
   ],
-  "modules-center": ["sway/window"],
+  "modules-center": [
+    "sway/window"
+  ],
   "modules-right": [
     "network",
     "pulseaudio",
