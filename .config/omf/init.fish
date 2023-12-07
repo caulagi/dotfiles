@@ -61,8 +61,8 @@ zoxide init fish | source
 # If running from tty1 start sway
 set TTY1 (tty)
 if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-    set -xg XDG_CURRENT_DESKTOP sway
-    exec sway
+    # set -xg XDG_CURRENT_DESKTOP sway
+    exec Hyprland
 end
 
 starship init fish | source
