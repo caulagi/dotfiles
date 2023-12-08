@@ -6,7 +6,7 @@
     "custom/right-arrow-dark"
   ],
   "modules-center": [
-    "sway/window"
+    "hyprland/window"
   ],
   "modules-right": [
     "network",
