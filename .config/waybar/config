@@ -10,7 +10,7 @@
   ],
   "modules-right": [
     "network",
-    "pulseaudio",
+    "wireplumber",
     "memory",
     "cpu",
     "battery",
@@ -31,7 +31,7 @@
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
-  "pulseaudio": {
+  "wireplumber": {
     "format": "{icon} {volume:2}%",
     "format-bluetooth": "{icon}  {volume}%",
     "format-muted": "MUTE",
@@ -43,8 +43,7 @@
       ]
     },
     "scroll-step": 5,
-    "on-click": "pavucontrol -t 3",
-    "on-click-right": "pamixer -t"
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
   },
   "memory": {
     "interval": 5,

@@ -27,7 +27,7 @@ window {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify {
+#clock, #battery, #cpu, #memory, #network, #wireplumber, #custom-spotify {
     padding: 0 10px;
     margin: 0 5px;
 }
@@ -80,12 +80,12 @@ window {
     background: #f53c3c;
 }
 
-#pulseaudio {
+#wireplumber {
     background: #f1c40f;
     color: black;
 }
 
-#pulseaudio.muted {
+#wireplumber.muted {
     background: #90b1b1;
     color: #2a5c45;
 }
