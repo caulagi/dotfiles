@@ -41,7 +41,7 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.fish.inc" ]
     set -Ux PYENV_ROOT $HOME/.local/share/pyenv
     fish_add_path $PYENV_ROOT/bin
     pyenv init - | source
-    pyenv shell 3.10.7
+    pyenv shell 3.11.7
     . "$HOME/Downloads/google-cloud-sdk/path.fish.inc"
 end
 
