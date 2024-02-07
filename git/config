@@ -29,5 +29,5 @@
 ;     insteadOf = https://github.com/
 [pager]
     branch = false
-[includeIf "gitdir:~/justwatch/"]
-    path = ~/justwatch/.gitconfig
+[includeIf "gitdir:~/fyndiq/"]
+    path = ~/fyndiq/.gitconfig
