@@ -23,3 +23,6 @@ disabled = false
 
 [python]
 disabled = false
+
+[character]
+vimcmd_symbol = "[ ](bold green)"
