@@ -31,7 +31,7 @@
     watch
   ];
   home.sessionVariables = {
-    HISTFILE = "$HOME/bash_history/$(date +%Y-%m)";
+    HISTFILE = "$XDG_DATA_HOME/bash_history";
     PAGER = "less";
     CLICLOLOR = 1;
     PATH = "$PATH:$HOME/go/bin";
