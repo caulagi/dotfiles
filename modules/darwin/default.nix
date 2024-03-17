@@ -3,22 +3,21 @@
   pkgs,
   ...
 }: {
-
   # here go the darwin preferences and config items
   programs.bash.enable = true;
   environment = {
     variables = {
-      XDG_CACHE_HOME  = "$HOME/.cache";
+      XDG_CACHE_HOME = "$HOME/.cache";
       XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME   = "$HOME/.local/share";
-      XDG_STATE_HOME  = "$HOME/.local/state";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
 
       EDITOR = "nvim";
     };
 
-    systemPackages = [ pkgs.coreutils ];
-    systemPath = [ "/opt/homebrew/bin" ];
-    pathsToLink = [ "/Applications" ];
+    systemPackages = [pkgs.coreutils];
+    systemPath = ["/opt/homebrew/bin"];
+    pathsToLink = ["/Applications"];
   };
 
   nix.extraOptions = ''
@@ -36,9 +35,8 @@
     hostName = "pcaulagi-cdon-macbook";
   };
 
-
   fonts.fontDir.enable = true;
-  fonts.fonts = [ (pkgs.nerdfonts.override { fonts = [ "Meslo" ]; }) ];
+  fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
   services.nix-daemon.enable = true;
   system = {
     defaults = {
@@ -86,13 +84,12 @@
     stateVersion = 4;
 
     activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.bashInteractive}/bin/bash''; # Since it's not possible to declare default shell, run this command after build
-
   };
 
   homebrew = {
     enable = true;
     caskArgs.no_quarantine = true;
     # use home brew to install packages for spotlight to work
-    casks = [ "wezterm" ];
+    casks = ["wezterm"];
   };
 }

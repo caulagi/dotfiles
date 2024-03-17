@@ -1,5 +1,5 @@
 # https://nix-community.github.io/home-manager/options.html
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.stateVersion = "22.11";
 
   home.packages = with pkgs; [
@@ -12,7 +12,9 @@
     curl
     docker
     duf
-    (google-cloud-sdk.withExtraComponents # gcloud components list
+    (
+      google-cloud-sdk.withExtraComponents # gcloud components list
+      
       (with google-cloud-sdk.components; [
         gke-gcloud-auth-plugin
         gcloud-man-pages
@@ -40,7 +42,7 @@
   # https://nix-community.github.io/home-manager/options.html
   programs.zoxide = {
     enable = true;
-    options = [ "--cmd j" ];
+    options = ["--cmd j"];
     enableBashIntegration = true;
   };
 
@@ -81,7 +83,6 @@
       dracula-vim
       gitsigns-nvim
     ];
-
   };
 
   programs.fzf.enable = true;
@@ -138,7 +139,6 @@
     gcloud.disabled = true; # no email address
 
     git_commit.only_detached = false; # show hash of git commit
-
   };
 
   programs.alacritty = {
