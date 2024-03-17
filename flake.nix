@@ -34,6 +34,7 @@
             users.pradipcaulagi.imports = [./modules/home-manager];
           };
         }
+        ./modules/bat.nix
       ];
     };
   };

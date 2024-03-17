@@ -13,8 +13,7 @@
     docker
     duf
     (
-      google-cloud-sdk.withExtraComponents # gcloud components list
-      
+      google-cloud-sdk.withExtraComponents
       (with google-cloud-sdk.components; [
         gke-gcloud-auth-plugin
         gcloud-man-pages
