@@ -35,6 +35,8 @@
           };
         }
         ./modules/bat.nix
+        ./modules/fish.nix
+        ./modules/environment.nix
       ];
     };
   };

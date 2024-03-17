@@ -6,15 +6,6 @@
   # here go the darwin preferences and config items
   programs.bash.enable = true;
   environment = {
-    variables = {
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_STATE_HOME = "$HOME/.local/state";
-
-      EDITOR = "nvim";
-    };
-
     systemPackages = [pkgs.coreutils];
     systemPath = ["/opt/homebrew/bin"];
     pathsToLink = ["/Applications"];
