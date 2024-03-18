@@ -132,14 +132,6 @@
     }
   '';
 
-  programs.starship.enable = true;
-  programs.starship.enableBashIntegration = true;
-  programs.starship.settings = {
-    gcloud.disabled = true; # no email address
-
-    git_commit.only_detached = false; # show hash of git commit
-  };
-
   programs.alacritty = {
     enable = true;
     settings = {
