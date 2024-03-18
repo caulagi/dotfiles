@@ -81,6 +81,6 @@
     enable = true;
     caskArgs.no_quarantine = true;
     # use home brew to install packages for spotlight to work
-    casks = ["wezterm"];
+    # casks = ["wezterm"];
   };
 }
