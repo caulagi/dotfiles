@@ -20,6 +20,21 @@
         set -xg fish_key_bindings fish_vi_key_bindings
         set -xg theme_show_exit_status no
       '';
+
+      plugins = with pkgs; [
+        # https://github.com/oh-my-fish/plugin-config
+        # omf under the hood stuff
+        {
+          name = "omf-config";
+          src = pkgs.fetchFromGitHub {
+            owner = "oh-my-fish";
+            repo = "plugin-config";
+            rev = "13c424efb73b153d9b8ad92916cf51159d44099d";
+            sha256 = "23hjWq1xdFs8vTv56ebD4GdhcDtcwShaRbHIehPSOXQ=";
+            fetchSubmodules = true;
+          };
+        }
+      ];
     };
   };
 }
