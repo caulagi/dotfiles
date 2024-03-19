@@ -88,23 +88,6 @@
   programs.fzf.enableBashIntegration = true;
   programs.eza.enable = true;
 
-  programs.git = {
-    enable = true;
-    userName = "Pradip Caulagi";
-    userEmail = "caulagi@gmail.com";
-    aliases = {
-      prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
-      root = "rev-parse --show-toplevel";
-    };
-    extraConfig = {
-      color.ui = true;
-      github.user = "caulagi";
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      push.autoSetupRemote = true;
-    };
-  };
-
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
 

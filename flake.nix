@@ -39,6 +39,7 @@
         ./modules/environment.nix
         ./modules/starship.nix
         ./modules/wezterm
+        ./modules/git
       ];
     };
   };
