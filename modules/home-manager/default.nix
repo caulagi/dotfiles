@@ -132,25 +132,6 @@
     }
   '';
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        normal = {
-          family = "MesloLGS Nerd Font Mono";
-        };
-        size = 16;
-      };
-      selection = {
-        save_to_clipboard = true;
-      };
-      cursor = {
-        style = "Block";
-        unfocused_hollow = true;
-      };
-    };
-  };
-
   programs.zellij = {
     enable = true;
     enableBashIntegration = true;
