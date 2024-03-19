@@ -8,7 +8,7 @@
   ];
   home-manager.users.pradipcaulagi.programs.git = {
     enable = true;
-    
+
     userName = "Pradip Caulagi";
     userEmail = "caulagi@gmail.com";
     signing.key = "0179B829112D6737";
