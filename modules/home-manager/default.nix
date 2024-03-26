@@ -2,6 +2,10 @@
 {pkgs, ...}: {
   home.stateVersion = "22.11";
 
+  imports = [
+    ./wezterm
+  ];
+
   home.packages = with pkgs; [
     awscli2
     ko
