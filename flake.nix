@@ -13,6 +13,9 @@
     # https://daiderd.com/nix-darwin/manual/
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs @ {
     nixpkgs,
@@ -40,6 +43,7 @@
         ./modules/starship.nix
         ./modules/wezterm
         ./modules/git
+        ./modules/nixvim
       ];
     };
   };
