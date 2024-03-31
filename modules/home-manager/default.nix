@@ -9,14 +9,11 @@
   ];
 
   home.packages = with pkgs; [
-    awscli2
-    ko
     go
     gzip
     httpie
     colima
     curl
-    docker
     duf
     (
       google-cloud-sdk.withExtraComponents
@@ -28,7 +25,6 @@
     kubectl
     fd
     pre-commit
-    hugo
     gosec
     jq
     less
