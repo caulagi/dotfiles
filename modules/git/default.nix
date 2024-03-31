@@ -8,6 +8,7 @@
   ];
   home-manager.users.pradipcaulagi.programs.git = {
     enable = true;
+    lfs.enable = true;
 
     userName = "Pradip Caulagi";
     userEmail = "caulagi@gmail.com";
