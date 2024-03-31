@@ -14,6 +14,7 @@
     httpie
     colima
     curl
+    docker
     duf
     (
       google-cloud-sdk.withExtraComponents
