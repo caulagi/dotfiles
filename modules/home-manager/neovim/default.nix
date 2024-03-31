@@ -11,9 +11,11 @@
     vimdiffAlias = true;
     defaultEditor = true;
 
-    extraConfig = ''
-      lua require('gitsigns').setup()
+    plugins = with pkgs.vimPlugins; [
+      nvim-treesitter
+    ];
 
+    extraConfig = ''
       set list listchars=nbsp:¬,tab:»·,trail:·,extends:>
       set shiftwidth=4
       set softtabstop=4
@@ -31,15 +33,5 @@
       " See |last-position-jump|.
       :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     '';
-
-    plugins = with pkgs.vimPlugins; [
-      vim-commentary
-      vim-fugitive
-      vim-nix
-      vim-rhubarb
-      copilot-vim
-      dracula-vim
-      gitsigns-nvim
-    ];
   };
 }
