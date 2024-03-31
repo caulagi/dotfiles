@@ -5,6 +5,7 @@
   imports = [
     ./wezterm
     ./neovim
+    ./python
   ];
 
   home.packages = with pkgs; [
