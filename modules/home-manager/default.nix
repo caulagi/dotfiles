@@ -16,6 +16,7 @@
     curl
     docker
     duf
+    gnupg
     (
       google-cloud-sdk.withExtraComponents
       (with google-cloud-sdk.components; [
@@ -25,6 +26,7 @@
     )
     kubectl
     fd
+    pass
     pre-commit
     gosec
     jq
