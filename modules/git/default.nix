@@ -16,6 +16,7 @@
 
     extraConfig = {
       color.ui = true;
+      commit.gpgsign = true;
       core.ignorecase = false;
       diff.submodule = "log";
       github.user = "caulagi";
