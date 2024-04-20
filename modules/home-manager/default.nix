@@ -6,6 +6,7 @@
     ./wezterm
     ./neovim
     ./python
+    ./bat
   ];
 
   home.packages = with pkgs; [
