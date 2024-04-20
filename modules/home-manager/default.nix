@@ -7,6 +7,7 @@
     ./neovim
     ./python
     ./bat
+    ./git
   ];
 
   home.packages = with pkgs; [

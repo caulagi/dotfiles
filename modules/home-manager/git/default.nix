@@ -3,10 +3,7 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    git
-  ];
-  home-manager.users.pradipcaulagi.programs.git = {
+  programs.git = {
     enable = true;
     lfs.enable = true;
 
