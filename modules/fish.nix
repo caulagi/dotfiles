@@ -38,7 +38,7 @@
           };
         }
       ];
-      shellAliases =  {
+      shellAliases = {
         k = "kubectl";
         ki = "kubectl --context gke_fyndiq_europe-west1-b_integration-cluster";
       };

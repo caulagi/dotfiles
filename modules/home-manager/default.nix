@@ -8,6 +8,7 @@
     ./python
     ./bat
     ./git
+    ./starship
   ];
 
   home.packages = with pkgs; [

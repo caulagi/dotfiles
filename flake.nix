@@ -36,7 +36,6 @@
         }
         ./modules/fish.nix
         ./modules/environment.nix
-        ./modules/starship.nix
       ];
     };
   };
