@@ -3,12 +3,13 @@
   home.stateVersion = "22.11";
 
   imports = [
-    ./wezterm
+    ./bat
+    ./fish
+    ./git
     ./neovim
     ./python
-    ./bat
-    ./git
     ./starship
+    ./wezterm
   ];
 
   home.packages = with pkgs; [
@@ -58,7 +59,7 @@
   programs.eza.enable = true;
 
   programs.bash.enable = true;
-  programs.bash.enableCompletion = true;
+  programs.bash.enableCompletion = false;
 
   programs.direnv.enable = true;
   programs.direnv.enableBashIntegration = true;

@@ -34,7 +34,6 @@
             users.pradipcaulagi.imports = [./modules/home-manager];
           };
         }
-        ./modules/fish.nix
         ./modules/environment.nix
       ];
     };
