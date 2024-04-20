@@ -61,30 +61,6 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = false;
 
-  programs.direnv.enable = true;
-  programs.direnv.enableBashIntegration = true;
-
-  programs.bash.shellAliases = {
-    sloc = "scc -c --no-cocomo";
-    archlinux = "docker run -it --rm --platform linux/amd64 archlinux";
-    k = "kubecolor";
-    ll = "eza -alh --group-directories-first";
-    sts = "aws sts get-caller-identity";
-    nixswitch = "darwin-rebuild switch --flake ~/mac-nix/.#";
-    nixsearch = "nix search nixpkgs";
-    nixup = "pushd ~/mac-nix; nix flake update; nixswitch; popd";
-  };
-
-  programs.bash.initExtra = ''
-    PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-    shopt -s histappend
-
-    # search bash history
-    h () {
-      rg -a --sort path "$@" ~/bash_history/
-    }
-  '';
-
   programs.zellij = {
     enable = true;
   };
