@@ -1,86 +1,97 @@
 {
-  config,
+  lib,
   pkgs,
+  config,
   ...
-}: {
-  # here go the darwin preferences and config items
-  programs.bash.enable = true;
-  environment = {
-    systemPackages = [pkgs.coreutils];
-    systemPath = ["/opt/homebrew/bin"];
-    pathsToLink = ["/Applications"];
+}:
+with lib; let
+  username = config.username;
+in {
+  options = {
+    username = mkOption {
+      type = types.str;
+      default = "pcaulagi";
+    };
   };
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  config = {
+    environment = {
+      systemPackages = [pkgs.coreutils];
+      systemPath = ["/opt/homebrew/bin"];
+      pathsToLink = ["/Applications"];
+    };
 
-  system.keyboard.enableKeyMapping = true;
+    nix.extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
 
-  # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+    system.keyboard.enableKeyMapping = true;
 
-  users.users.pradipcaulagi.home = "/Users/pradipcaulagi";
+    # Add ability to used TouchID for sudo authentication
+    security.pam.enableSudoTouchIdAuth = true;
 
-  networking = {
-    hostName = "pcaulagi-cdon-macbook";
-  };
+    users.users.${username}.home = "/Users/${username}";
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
-  services.nix-daemon.enable = true;
-  system = {
-    defaults = {
-      finder.AppleShowAllExtensions = true;
-      finder._FXShowPosixPathInTitle = true;
-      # don't show desktop icons
-      finder.CreateDesktop = false;
-      # default to list view
-      finder.FXPreferredViewStyle = "Nlsv";
-      dock.autohide = true;
-      dock.autohide-delay = 0.01;
-      dock.autohide-time-modifier = 0.01;
-      dock.show-recents = false;
+    networking = {
+      hostName = "${username}-cdon-macbook";
+    };
 
-      CustomSystemPreferences = {
+    fonts.fontDir.enable = true;
+    fonts.fonts = [(pkgs.nerdfonts.override {fonts = ["Meslo"];})];
+    services.nix-daemon.enable = true;
+    system = {
+      defaults = {
+        finder.AppleShowAllExtensions = true;
+        finder._FXShowPosixPathInTitle = true;
+        # don't show desktop icons
+        finder.CreateDesktop = false;
+        # default to list view
+        finder.FXPreferredViewStyle = "Nlsv";
+        dock.autohide = true;
+        dock.autohide-delay = 0.01;
+        dock.autohide-time-modifier = 0.01;
+        dock.show-recents = false;
+
+        CustomSystemPreferences = {
+          NSGlobalDomain = {
+            NSWindowShouldDragOnGesture = true;
+          };
+        };
+
         NSGlobalDomain = {
-          NSWindowShouldDragOnGesture = true;
+          "com.apple.sound.beep.feedback" = 0;
+          "com.apple.sound.beep.volume" = 0.0;
+
+          # full keyboard control
+          AppleKeyboardUIMode = 3;
+
+          # allow key repeat
+          ApplePressAndHoldEnabled = false;
+          # delay before repeating keystrokes
+          InitialKeyRepeat = 15; # normal minimum is 15 (225 ms)
+          # delay between repeated keystrokes upon holding a key
+          KeyRepeat = 2; # normal minimum is 2 (30 ms)
+          AppleShowAllExtensions = true;
+          # AppleShowScrollBars = "Automatic";
+
+          # Reduce window animations
+          NSWindowResizeTime = 0.1;
+
+          # window open/close animation
+          NSAutomaticWindowAnimationsEnabled = false;
         };
       };
+      # backwards compat; don't change
+      stateVersion = 4;
 
-      NSGlobalDomain = {
-        "com.apple.sound.beep.feedback" = 0;
-        "com.apple.sound.beep.volume" = 0.0;
-
-        # full keyboard control
-        AppleKeyboardUIMode = 3;
-
-        # allow key repeat
-        ApplePressAndHoldEnabled = false;
-        # delay before repeating keystrokes
-        InitialKeyRepeat = 15; # normal minimum is 15 (225 ms)
-        # delay between repeated keystrokes upon holding a key
-        KeyRepeat = 2; # normal minimum is 2 (30 ms)
-        AppleShowAllExtensions = true;
-        # AppleShowScrollBars = "Automatic";
-
-        # Reduce window animations
-        NSWindowResizeTime = 0.1;
-
-        # window open/close animation
-        NSAutomaticWindowAnimationsEnabled = false;
-      };
+      # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.bashInteractive}/bin/bash''; # Since it's not possible to declare default shell, run this command after build
     };
-    # backwards compat; don't change
-    stateVersion = 4;
 
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.bashInteractive}/bin/bash''; # Since it's not possible to declare default shell, run this command after build
-  };
-
-  homebrew = {
-    enable = true;
-    caskArgs.no_quarantine = true;
-    # use home brew to install packages for spotlight to work
-    # casks = ["wezterm"];
+    homebrew = {
+      enable = true;
+      caskArgs.no_quarantine = true;
+      # use home brew to install packages for spotlight to work
+      # casks = ["wezterm"];
+    };
   };
 }

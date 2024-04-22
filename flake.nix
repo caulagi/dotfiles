@@ -1,41 +1,63 @@
 {
   description = "my minimal flake";
   inputs = {
-    # Where we get most of our software. Giant mono repo with recipes
-    # called derivations that say how to build software.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # nixos-22.11
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    # Manages configs links things into your home directory
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Controls system level software and settings including fonts
-    # https://daiderd.com/nix-darwin/manual/
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs @ {
-    nixpkgs,
-    home-manager,
-    darwin,
-    ...
-  }: {
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    darwinConfigurations.pcaulagi = darwin.lib.darwinSystem {
+  outputs = inputs:
+    with inputs; let
       system = "aarch64-darwin";
-      pkgs = import nixpkgs {system = "aarch64-darwin";};
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       modules = [
-        ./modules/darwin
-        home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.pradipcaulagi.imports = [./modules/home-manager];
-          };
-        }
         ./modules/environment.nix
       ];
+    in {
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
+      darwinConfigurations.pcaulagi = darwin.lib.darwinSystem {
+        inherit system pkgs;
+
+        modules =
+          modules
+          ++ [
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.pcaulagi.imports = [./modules/home-manager];
+              };
+            }
+            ./modules/darwin
+            {
+              username = "pcaulagi";
+            }
+          ];
+      };
+      darwinConfigurations.pradipcaulagi = darwin.lib.darwinSystem {
+        inherit system pkgs;
+        modules =
+          modules
+          ++ [
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.pradipcaulagi.imports = [./modules/home-manager];
+              };
+            }
+            ./modules/darwin
+            {
+              username = "pradipcaulagi";
+            }
+          ];
+      };
     };
-  };
 }
