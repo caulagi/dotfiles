@@ -13,14 +13,14 @@
   ];
 
   home.packages = with pkgs; [
-    go
-    gzip
-    httpie
     colima
     curl
     docker
     duf
+    fd
     gnupg
+    go
+    gzip
     (
       google-cloud-sdk.withExtraComponents
       (with google-cloud-sdk.components; [
@@ -28,13 +28,14 @@
         gcloud-man-pages
       ])
     )
-    kubectl
-    fd
-    pass
-    pre-commit
+    httpie
     jq
+    kubectl
     less
     nixpkgs-fmt
+    nodejs_20
+    pass
+    pre-commit
     ripgrep
     shellcheck
     watch
