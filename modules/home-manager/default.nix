@@ -1,6 +1,6 @@
 # https://nix-community.github.io/home-manager/options.html
 {pkgs, ...}: {
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.11";
 
   imports = [
     ./bat
@@ -32,7 +32,6 @@
     fd
     pass
     pre-commit
-    gosec
     jq
     less
     nixpkgs-fmt
