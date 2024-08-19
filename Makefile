@@ -1,2 +1,2 @@
 switch:
-	darwin-rebuild switch --flake .#pcaulagi
+	darwin-rebuild switch --flake .#pradipcaulagi

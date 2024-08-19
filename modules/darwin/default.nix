@@ -23,7 +23,7 @@
   users.users.pradipcaulagi.home = "/Users/pradipcaulagi";
 
   networking = {
-    hostName = "pcaulagi-cdon-macbook";
+    hostName = "pradipcaulagi-macbook";
   };
 
   fonts.fontDir.enable = true;

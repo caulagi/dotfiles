@@ -21,7 +21,7 @@
     ...
   }: {
     formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    darwinConfigurations.pcaulagi = darwin.lib.darwinSystem {
+    darwinConfigurations.pradipcaulagi = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       pkgs = import nixpkgs {system = "aarch64-darwin";};
       modules = [
