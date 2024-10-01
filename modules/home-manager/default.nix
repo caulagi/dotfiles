@@ -18,6 +18,7 @@
     docker
     duf
     fd
+    gh
     gnupg
     go
     gzip
