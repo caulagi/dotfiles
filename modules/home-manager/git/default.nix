@@ -24,6 +24,7 @@
       push.autoSetupRemote = true;
       push.default = "simple";
       push.recurseSubmodules = "on-demand";
+      rebase.autoStash = true;
       status.submoduleSummary = "1";
     };
   };
