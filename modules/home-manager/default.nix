@@ -7,6 +7,7 @@
     ./fish
     ./git
     ./neovim
+    ./password-store
     ./python
     ./starship
     ./wezterm
@@ -35,7 +36,6 @@
     less
     nixpkgs-fmt
     nodejs_20
-    pass
     pre-commit
     ripgrep
     shellcheck
