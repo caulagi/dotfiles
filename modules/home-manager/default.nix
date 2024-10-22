@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     colima
     curl
+    direnv
     docker
     duf
     fd
@@ -64,5 +65,11 @@
 
   programs.zellij = {
     enable = true;
+  };
+
+  programs.direnv = {
+    # don't need to enable explicitly for fish since fish automatically loads direnv package
+    enable = true;
+    nix-direnv.enable = true;
   };
 }
