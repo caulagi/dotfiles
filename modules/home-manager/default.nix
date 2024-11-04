@@ -40,6 +40,7 @@
     pre-commit
     ripgrep
     shellcheck
+    terraform
     watch
   ];
   home.sessionVariables = {
