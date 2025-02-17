@@ -12,7 +12,8 @@
     "files.associations": {
         "*.hcl": "terraform",
         "*.j2": "python",
-        "*.tfvars": "terraform"
+        "*.tfvars": "terraform",
+        "*.yml": "yaml"
     },
     "terraform.indexing": {
         "enabled": false,
