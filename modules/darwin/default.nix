@@ -18,7 +18,7 @@
   system.keyboard.enableKeyMapping = true;
 
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   users.users.pradipcaulagi.home = "/Users/pradipcaulagi";
 
@@ -26,11 +26,8 @@
     hostName = "pradipcaulagi-macbook";
   };
 
-  fonts.packages = [
-    (pkgs.nerdfonts.override {fonts = ["Meslo"];})
-  ];
-  services.nix-daemon.enable = true;
   system = {
+    primaryUser = "pradipcaulagi";
     defaults = {
       finder.AppleShowAllExtensions = true;
       finder._FXShowPosixPathInTitle = true;
