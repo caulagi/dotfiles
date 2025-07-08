@@ -18,6 +18,7 @@
     curl
     direnv
     docker
+    docker-buildx
     duf
     fd
     gh
@@ -43,6 +44,7 @@
     shellcheck
     terraform
     watch
+    wget
   ];
   home.sessionVariables = {
     HISTFILE = "$XDG_DATA_HOME/bash_history";
