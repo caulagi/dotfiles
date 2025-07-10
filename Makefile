@@ -1,2 +1,2 @@
 switch:
-	darwin-rebuild switch --flake .#pradipcaulagi
+	sudo darwin-rebuild switch --flake .#pradipcaulagi
