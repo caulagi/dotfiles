@@ -6,6 +6,7 @@
     ./bat
     ./fish
     ./git
+    ./lazygit
     ./neovim
     ./password-store
     ./python
@@ -16,6 +17,7 @@
   home.packages = with pkgs; [
     colima
     curl
+    delta
     direnv
     docker
     docker-buildx
@@ -36,7 +38,9 @@
     httpie
     jq
     kubectl
+    lazygit
     less
+    neovim-remote
     nixpkgs-fmt
     nodejs_20
     pre-commit
@@ -51,6 +55,8 @@
     PAGER = "less";
     CLICLOLOR = 1;
     PATH = "$PATH:$HOME/go/bin";
+    EDITOR = "nvim";
+    GIT_EDITOR = "nvim";
   };
 
   # https://nix-community.github.io/home-manager/options.html

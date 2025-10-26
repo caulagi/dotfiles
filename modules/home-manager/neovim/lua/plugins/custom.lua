@@ -16,6 +16,95 @@ return {
 		},
 	},
 
+	-- lazygit integration
+	{
+		"kdheepak/lazygit.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+			{ "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit Current File" },
+			{ "<leader>gl", "<cmd>LazyGitFilter<cr>", desc = "LazyGit Log" },
+		},
+		config = function()
+			vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
+			vim.g.lazygit_floating_window_scaling_factor = 0.9 -- scaling factor for floating window
+			vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
+			vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
+			vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
+			vim.g.lazygit_use_custom_config_file_path = 0 -- config file path is evaluated if this value is 1
+			vim.g.lazygit_config_file_path = "" -- custom config file path
+		end,
+	},
+
+	-- Enhanced git integration
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+			on_attach = function(buffer)
+				local gs = package.loaded.gitsigns
+
+				local function map(mode, l, r, desc)
+					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+				end
+
+				-- Navigation
+				map("n", "]h", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "]c", bang = true })
+					else
+						gs.nav_hunk("next")
+					end
+				end, "Next Hunk")
+				map("n", "[h", function()
+					if vim.wo.diff then
+						vim.cmd.normal({ "[c", bang = true })
+					else
+						gs.nav_hunk("prev")
+					end
+				end, "Prev Hunk")
+				map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+				map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+
+				-- Actions
+				map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+				map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+				map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+				map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+				map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+				map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+				map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+				map("n", "<leader>ghd", gs.diffthis, "Diff This")
+				map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+
+				-- Text object
+				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+			end,
+		},
+	},
+
+	-- Git blame and history
+	{
+		"f-person/git-blame.nvim",
+		event = "BufRead",
+		config = function()
+			vim.cmd("highlight default link gitblame SpecialComment")
+			vim.g.gitblame_enabled = 0
+		end,
+		keys = {
+			{ "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Git Blame Toggle" },
+		},
+	},
+
 	-- change trouble config
 	{
 		"folke/trouble.nvim",
@@ -109,7 +198,7 @@ return {
 
 	-- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
 	-- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-	{ import = "lazyvim.plugins.extras.lang.typescript" },
+	-- { import = "lazyvim.plugins.extras.lang.typescript" }, -- moved to lazy.lua
 
 	-- add more treesitter parsers
 	{
@@ -169,10 +258,10 @@ return {
 	},
 
 	-- use mini.starter instead of alpha
-	{ import = "lazyvim.plugins.extras.ui.mini-starter" },
+	-- { import = "lazyvim.plugins.extras.ui.mini-starter" }, -- moved to lazy.lua
 
 	-- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-	{ import = "lazyvim.plugins.extras.lang.json" },
+	-- { import = "lazyvim.plugins.extras.lang.json" }, -- moved to lazy.lua
 
 	-- add any tools you want to have installed below
 	{
