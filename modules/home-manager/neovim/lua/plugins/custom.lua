@@ -30,7 +30,7 @@ return {
 		config = function()
 			vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
 			vim.g.lazygit_floating_window_scaling_factor = 0.9 -- scaling factor for floating window
-			vim.g.lazygit_floating_window_border_chars = {'╭','─', '╮', '│', '╯','─', '╰', '│'} -- customize lazygit popup window border characters
+			vim.g.lazygit_floating_window_border_chars = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" } -- customize lazygit popup window border characters
 			vim.g.lazygit_floating_window_use_plenary = 0 -- use plenary.nvim to manage floating window if available
 			vim.g.lazygit_use_neovim_remote = 1 -- fallback to 0 if neovim-remote is not installed
 			vim.g.lazygit_use_custom_config_file_path = 0 -- config file path is evaluated if this value is 1
@@ -72,8 +72,12 @@ return {
 						gs.nav_hunk("prev")
 					end
 				end, "Prev Hunk")
-				map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
-				map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+				map("n", "]H", function()
+					gs.nav_hunk("last")
+				end, "Last Hunk")
+				map("n", "[H", function()
+					gs.nav_hunk("first")
+				end, "First Hunk")
 
 				-- Actions
 				map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
@@ -82,9 +86,13 @@ return {
 				map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
 				map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
 				map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
-				map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+				map("n", "<leader>ghb", function()
+					gs.blame_line({ full = true })
+				end, "Blame Line")
 				map("n", "<leader>ghd", gs.diffthis, "Diff This")
-				map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+				map("n", "<leader>ghD", function()
+					gs.diffthis("~")
+				end, "Diff This ~")
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
@@ -196,10 +204,6 @@ return {
 		},
 	},
 
-	-- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
-	-- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-	-- { import = "lazyvim.plugins.extras.lang.typescript" }, -- moved to lazy.lua
-
 	-- add more treesitter parsers
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -256,12 +260,6 @@ return {
 			}
 		end,
 	},
-
-	-- use mini.starter instead of alpha
-	-- { import = "lazyvim.plugins.extras.ui.mini-starter" }, -- moved to lazy.lua
-
-	-- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-	-- { import = "lazyvim.plugins.extras.lang.json" }, -- moved to lazy.lua
 
 	-- add any tools you want to have installed below
 	{
