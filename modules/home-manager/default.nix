@@ -42,7 +42,7 @@
     less
     neovim-remote
     nixpkgs-fmt
-    nodejs_20
+    nodejs_22
     pre-commit
     ripgrep
     shellcheck
