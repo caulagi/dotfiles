@@ -113,6 +113,199 @@ return {
 		},
 	},
 
+	-- GitHub Copilot base plugin
+	{
+		"github/copilot.vim",
+		lazy = false, -- Load immediately so commands are available
+		config = function()
+			-- Disable default tab mapping since we use custom ones
+			vim.g.copilot_no_tab_map = true
+			vim.g.copilot_assume_mapped = true
+
+			-- Custom keymaps
+			vim.keymap.set('i', '<M-l>', 'copilot#Accept("\\<CR>")', {
+				expr = true,
+				replace_keycodes = false,
+				desc = "Accept Copilot suggestion"
+			})
+			vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)', { desc = "Next Copilot suggestion" })
+			vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)', { desc = "Previous Copilot suggestion" })
+			vim.keymap.set('i', '<C-]>', '<Plug>(copilot-dismiss)', { desc = "Dismiss Copilot suggestion" })
+		end,
+	},
+
+	-- GitHub Copilot Chat integration
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "canary",
+		dependencies = {
+			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		build = "make tiktoken", -- Only on MacOS or Linux
+		opts = {
+			debug = true, -- Enable debugging to see what's happening
+			proxy = nil, -- [protocol://]host[:port] Use this proxy
+			allow_insecure = false, -- Allow insecure server connections
+			system_prompt = "You are a helpful AI assistant.", -- System prompt to use
+			model = 'gpt-4', -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
+			temperature = 0.1, -- GPT temperature
+			question_header = '## User ', -- Header to use for user questions
+			answer_header = '## Copilot ', -- Header to use for AI answers
+			error_header = '## Error ', -- Header to use for errors
+			separator = '---', -- Separator to use in chat
+			show_folds = true, -- Shows folds for sections in chat
+			show_help = true, -- Shows help message as virtual lines when waiting for user input
+			auto_follow_cursor = true, -- Auto-follow cursor in chat
+			auto_insert_mode = false, -- Automatically enter insert mode when opening window and if auto follow cursor is enabled on new prompt
+			clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
+			context = nil, -- Default context to use, 'buffers', 'buffer' or none (can be specified manually in prompt via @).
+			history_path = vim.fn.stdpath('data') .. '/copilotchat_history', -- Default path to stored history
+			callback = nil, -- Callback to use when ask response is received
+		},
+		keys = {
+			-- Show help actions with telescope
+			{
+				"<leader>cch",
+				function()
+					local actions = require("CopilotChat.actions")
+					require("CopilotChat.integrations.telescope").pick(actions.help_actions())
+				end,
+				desc = "CopilotChat - Help actions",
+			},
+			-- Show prompts actions with telescope
+			{
+				"<leader>ccp",
+				function()
+					local actions = require("CopilotChat.actions")
+					require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+				end,
+				desc = "CopilotChat - Prompt actions",
+			},
+			{
+				"<leader>ccp",
+				":lua require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions({selection = require('CopilotChat.select').visual}))<CR>",
+				mode = "x",
+				desc = "CopilotChat - Prompt actions",
+			},
+			-- Code related commands
+			{ "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+			{ "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+			{ "<leader>ccr", "<cmd>CopilotChatReview<cr>", desc = "CopilotChat - Review code" },
+			{ "<leader>ccR", "<cmd>CopilotChatRefactor<cr>", desc = "CopilotChat - Refactor code" },
+			{ "<leader>ccn", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
+			-- Chat with Copilot in visual mode
+			{
+				"<leader>ccv",
+				":CopilotChatVisual",
+				mode = "x",
+				desc = "CopilotChat - Open in vertical split",
+			},
+			{
+				"<leader>ccx",
+				":CopilotChatInline<cr>",
+				mode = "x",
+				desc = "CopilotChat - Inline chat",
+			},
+			-- Custom input for CopilotChat
+			{
+				"<leader>cci",
+				function()
+					local input = vim.fn.input("Ask Copilot: ")
+					if input ~= "" then
+						vim.cmd("CopilotChat " .. input)
+					end
+				end,
+				desc = "CopilotChat - Ask input",
+			},
+			-- Generate commit message based on the git diff
+			{
+				"<leader>ccm",
+				"<cmd>CopilotChatCommit<cr>",
+				desc = "CopilotChat - Generate commit message for all changes",
+			},
+			{
+				"<leader>ccM",
+				"<cmd>CopilotChatCommitStaged<cr>",
+				desc = "CopilotChat - Generate commit message for staged changes",
+			},
+			-- Quick chat with Copilot
+			{
+				"<leader>ccq",
+				function()
+					local input = vim.fn.input("Quick Chat: ")
+					if input ~= "" then
+						vim.cmd("CopilotChatBuffer " .. input)
+					end
+				end,
+				desc = "CopilotChat - Quick chat",
+			},
+			-- Debug
+			{ "<leader>ccd", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
+			-- Fix the issue with diagnostic
+			{ "<leader>ccf", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
+			-- Clear buffer and chat history
+			{ "<leader>ccl", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
+			-- Toggle Copilot Chat Vsplit
+			{ "<leader>ccv", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+		},
+		config = function(_, opts)
+			local chat = require("CopilotChat")
+			local select = require("CopilotChat.select")
+			-- Use unnamed register for the selection
+			opts.selection = select.unnamed
+
+			-- Override the git prompts message
+			opts.prompts = {
+				Commit = {
+					prompt = "Write commit message for the change with commitizen convention",
+					selection = select.gitdiff,
+				},
+				CommitStaged = {
+					prompt = "Write commit message for the change with commitizen convention",
+					selection = function(source)
+						return select.gitdiff(source, true)
+					end,
+				},
+			}
+
+			chat.setup(opts)
+
+			vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
+				chat.ask(args.args, { selection = select.visual })
+			end, { nargs = "*", range = true })
+
+			-- Inline chat with Copilot
+			vim.api.nvim_create_user_command("CopilotChatInline", function(args)
+				chat.ask(args.args, {
+					selection = select.visual,
+					window = {
+						layout = "float",
+						relative = "cursor",
+						width = 1,
+						height = 0.4,
+						row = 1,
+					},
+				})
+			end, { nargs = "*", range = true })
+
+			-- Restore CMP on CopilotChat buffer
+			vim.api.nvim_create_autocmd("BufEnter", {
+				pattern = "copilot-*",
+				callback = function()
+					vim.opt_local.relativenumber = true
+					vim.opt_local.number = true
+
+					-- Get current filetype and set it to markdown if the current filetype is copilot-chat
+					local ft = vim.bo.filetype
+					if ft == "copilot-chat" then
+						vim.bo.filetype = "markdown"
+					end
+				end,
+			})
+		end,
+	},
+
 	-- change trouble config
 	{
 		"folke/trouble.nvim",
