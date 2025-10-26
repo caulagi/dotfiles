@@ -75,10 +75,17 @@
     activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.bashInteractive}/bin/bash''; # Since it's not possible to declare default shell, run this command after build
   };
 
-  homebrew = {
-    enable = true;
-    caskArgs.no_quarantine = true;
-    # use home brew to install packages for spotlight to work
-    # casks = ["wezterm"];
-  };
+  # Temporarily disable homebrew due to macOS 26.0.1 compatibility issues
+  # homebrew = {
+  #   enable = true;
+  #   caskArgs.no_quarantine = true;
+  #   # Temporarily disable brewfile due to macOS 26.0.1 compatibility issues
+  #   onActivation = {
+  #     autoUpdate = false;
+  #     upgrade = false;
+  #     cleanup = "none";
+  #   };
+  #   # use home brew to install packages for spotlight to work
+  #   # casks = ["wezterm"];
+  # };
 }
