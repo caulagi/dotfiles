@@ -11,6 +11,7 @@
     ./password-store
     ./python
     ./starship
+    ./vscode
     ./wezterm
   ];
 
