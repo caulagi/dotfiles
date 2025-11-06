@@ -1,18 +1,32 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
-
-    # Let Nix be the single source of truth
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-    mutableExtensionsDir = false;
+    # Wrap VSCode to use custom extensions directory
+    package =
+      (pkgs.symlinkJoin {
+        name = "vscode-wrapped";
+        paths = [pkgs.vscode];
+        nativeBuildInputs = [pkgs.makeWrapper];
+        postBuild = ''
+          wrapProgram $out/bin/code \
+            --add-flags "--extensions-dir ${config.home.homeDirectory}/.vscode-extensions"
+        '';
+      })
+      // {
+        pname = pkgs.vscode.pname;
+        version = pkgs.vscode.version;
+      };
+    mutableExtensionsDir = true;
 
     profiles.default = {
+      # Let Nix be the single source of truth
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
       extensions =
         # Curated extensions that exist in nixpkgs:
         (with pkgs.vscode-extensions; [
@@ -138,6 +152,9 @@
           "yaml" = true;
           "plaintext" = true;
           "markdown" = true;
+        };
+        "github.copilot.chat.enable" = {
+          "*" = true;
         };
 
         "claudeCode.environmentVariables" = [
