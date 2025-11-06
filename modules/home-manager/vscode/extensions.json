@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "github.copilot",
+    "github.copilot-chat",
+    "golang.go",
+    "hashicorp.terraform",
+    "jdinhlife.gruvbox",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "pkief.material-icon-theme",
+    "redhat.vscode-yaml",
+    "rust-lang.rust-analyzer",
+    "timonwong.shellcheck",
+    "vscode-icons-team.vscode-icons"
+  ]
+}

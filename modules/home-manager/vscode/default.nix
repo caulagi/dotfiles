@@ -3,10 +3,14 @@
   lib,
   config,
   ...
-}: {
+}: let
+  extensionsJson = ./extensions.json;
+  extensionsData = builtins.fromJSON (builtins.readFile extensionsJson);
+  extensionsList = builtins.concatStringsSep " " extensionsData.recommendations;
+in {
   programs.vscode = {
     enable = true;
-    # Wrap VSCode to use custom extensions directory
+    # Wrap VSCode to use custom extensions directory and install extensions
     package =
       (pkgs.symlinkJoin {
         name = "vscode-wrapped";
@@ -15,11 +19,24 @@
         postBuild = ''
           wrapProgram $out/bin/code \
             --add-flags "--extensions-dir ${config.home.homeDirectory}/.vscode-extensions"
+
+          # Create a script to install extensions
+          cat > $out/bin/vscode-install-extensions << 'EOF'
+          #!/bin/sh
+          EXTENSIONS="${extensionsList}"
+          for ext in $EXTENSIONS; do
+            ${pkgs.vscode}/bin/code --extensions-dir ${config.home.homeDirectory}/.vscode-extensions --install-extension "$ext" 2>/dev/null || true
+          done
+          EOF
+          chmod +x $out/bin/vscode-install-extensions
         '';
       })
       // {
         pname = pkgs.vscode.pname;
         version = pkgs.vscode.version;
+        meta = pkgs.vscode.meta // {
+          mainProgram = "code";
+        };
       };
     mutableExtensionsDir = true;
 
@@ -27,37 +44,6 @@
       # Let Nix be the single source of truth
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      extensions =
-        # Curated extensions that exist in nixpkgs:
-        (with pkgs.vscode-extensions; [
-          dbaeumer.vscode-eslint
-          eamodio.gitlens
-          editorconfig.editorconfig
-          github.copilot
-          github.copilot-chat
-          github.vscode-github-actions
-          golang.go
-          hashicorp.terraform
-          jdinhlife.gruvbox
-          pkief.material-icon-theme
-          redhat.vscode-yaml
-          rust-lang.rust-analyzer
-        ])
-        # Marketplace-only (or newer) extensions fetched generically:
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            publisher = "anthropic";
-            name = "claude-code";
-            version = "2.0.33";
-            sha256 = "sha256-Bl/Rjp3nvY8KmftajnXu/OW+O9MXq3mYii0tLZTMXoA=";
-          }
-          {
-            publisher = "ms-python";
-            name = "python";
-            version = "2025.17.2025110501";
-            sha256 = "sha256-Ge3ZSobngd0WnIE6eyoOmICQm5ANS5mBR1GPp9/FJag=";
-          }
-        ];
 
       userSettings = {
         # Kubernetes settings
@@ -179,4 +165,13 @@
       };
     };
   };
+
+  # Automatically install extensions on activation
+  home.activation.installVSCodeExtensions = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    echo "Installing VSCode extensions..."
+    EXTENSIONS="${extensionsList}"
+    for ext in $EXTENSIONS; do
+      $DRY_RUN_CMD ${pkgs.vscode}/bin/code --extensions-dir ${config.home.homeDirectory}/.vscode-extensions --install-extension "$ext" 2>/dev/null || true
+    done
+  '';
 }
