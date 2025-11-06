@@ -147,7 +147,7 @@
           }
           {
             "name" = "CLOUD_ML_REGION";
-            "value" = "europe-north2";
+            "value" = "europe-west1";
           }
           {
             "name" = "ANTHROPIC_VERTEX_PROJECT_ID";
@@ -155,10 +155,10 @@
           }
           {
             "name" = "ANTHROPIC_MODEL";
-            "value" = "claude-opus-4-5@20250929";
+            "value" = "claude-sonnet-4-5@20250929";
           }
         ];
-        "claudeCode.selectedModel" = "claude-opus-4-5@20250929";
+        "claudeCode.selectedModel" = "claude-sonnet-4-5@20250929";
       };
     };
   };
