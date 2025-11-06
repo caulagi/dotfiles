@@ -1,120 +1,144 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
 
+    # Let Nix be the single source of truth
+    enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
+    mutableExtensionsDir = false;
+
     profiles.default = {
-      extensions = with pkgs.vscode-extensions; [
-        dbaeumer.vscode-eslint
-        eamodio.gitlens
-        editorconfig.editorconfig
-        github.copilot
-        golang.go
-        hashicorp.terraform
-        jdinhlife.gruvbox
-        ms-python.python
-        ms-python.vscode-pylance
-        pkief.material-icon-theme
-        redhat.vscode-yaml
-        rust-lang.rust-analyzer
-        timonwong.shellcheck
-        vscode-icons-team.vscode-icons
-      ];
+      extensions =
+        # Curated extensions that exist in nixpkgs:
+        (with pkgs.vscode-extensions; [
+          dbaeumer.vscode-eslint
+          eamodio.gitlens
+          editorconfig.editorconfig
+          github.copilot
+          github.copilot-chat
+          github.vscode-github-actions
+          golang.go
+          hashicorp.terraform
+          jdinhlife.gruvbox
+          pkief.material-icon-theme
+          redhat.vscode-yaml
+          rust-lang.rust-analyzer
+        ])
+        # Marketplace-only (or newer) extensions fetched generically:
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            publisher = "anthropic";
+            name = "claude-code";
+            version = "2.0.33";
+            sha256 = "sha256-Bl/Rjp3nvY8KmftajnXu/OW+O9MXq3mYii0tLZTMXoA=";
+          }
+          {
+            publisher = "ms-python";
+            name = "python";
+            version = "2025.17.2025110501";
+            sha256 = "sha256-Ge3ZSobngd0WnIE6eyoOmICQm5ANS5mBR1GPp9/FJag=";
+          }
+        ];
 
       userSettings = {
-      # Kubernetes settings
-      "vs-kubernetes.crd-code-completion" = "enabled";
+        # Kubernetes settings
+        "vs-kubernetes.crd-code-completion" = "enabled";
 
-      # Editor settings
-      "editor.fontLigatures" = true;
-      "editor.fontFamily" = "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace";
-      "editor.renderWhitespace" = "all";
-      "editor.suggestSelection" = "first";
-      "editor.find.addExtraSpaceOnTop" = false;
-      "editor.minimap.enabled" = false;
-      "editor.inlineSuggest.enabled" = true;
-      "editor.fontSize" = 13;
-      "editor.multiCursorModifier" = "ctrlCmd";
+        # Editor settings
+        "editor.fontLigatures" = true;
+        "editor.fontFamily" = "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+        "editor.renderWhitespace" = "all";
+        "editor.suggestSelection" = "first";
+        "editor.find.addExtraSpaceOnTop" = false;
+        "editor.minimap.enabled" = false;
+        "editor.inlineSuggest.enabled" = true;
+        "editor.fontSize" = 13;
+        "editor.multiCursorModifier" = "ctrlCmd";
 
-      # Workbench settings
-      "workbench.startupEditor" = "newUntitledFile";
-      "workbench.editor.enablePreview" = false;
-      "workbench.editor.enablePreviewFromQuickOpen" = false;
-      "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "Gruvbox Dark Medium";
-      "workbench.editorAssociations" = {
-        "*.ipynb" = "jupyter.notebook.ipynb";
-      };
+        # Workbench settings
+        "workbench.startupEditor" = "newUntitledFile";
+        "workbench.editor.enablePreview" = false;
+        "workbench.editor.enablePreviewFromQuickOpen" = false;
+        "workbench.iconTheme" = "vscode-icons";
+        "workbench.colorTheme" = "Gruvbox Dark Medium";
+        "workbench.editorAssociations" = {
+          "*.ipynb" = "jupyter.notebook.ipynb";
+        };
 
-      # Files settings
-      "files.autoSave" = "afterDelay";
-      "files.trimTrailingWhitespace" = true;
-      "files.associations" = {
-        "*.hcl" = "terraform";
-        "*.j2" = "python";
-        "*.tfvars" = "terraform";
-        "*.yml" = "yaml";
-      };
+        # Files settings
+        "files.autoSave" = "afterDelay";
+        "files.trimTrailingWhitespace" = true;
+        "files.associations" = {
+          "*.hcl" = "terraform";
+          "*.j2" = "python";
+          "*.tfvars" = "terraform";
+          "*.yml" = "yaml";
+        };
 
-      # Explorer settings
-      "explorer.confirmDelete" = false;
-      "explorer.confirmDragAndDrop" = false;
+        # Explorer settings
+        "explorer.confirmDelete" = false;
+        "explorer.confirmDragAndDrop" = false;
 
-      # Language specific settings
-      "[dockerfile]" = {
-        "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
-      };
-      "[python]" = {
-        "editor.formatOnPaste" = false;
-        "editor.formatOnSave" = true;
-      };
-      "[json]" = {
-        "editor.tabSize" = 2;
-      };
-      "[terraform]" = {
-        "editor.defaultFormatter" = "hashicorp.terraform";
-      };
+        # Language specific settings
+        "[dockerfile]" = {
+          "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
+        };
+        "[python]" = {
+          "editor.formatOnPaste" = false;
+          "editor.formatOnSave" = true;
+        };
+        "[json]" = {
+          "editor.tabSize" = 2;
+        };
+        "[terraform]" = {
+          "editor.defaultFormatter" = "hashicorp.terraform";
+        };
 
-      # Python settings
-      "python.formatting.provider" = "black";
-      "python.linting.flake8Enabled" = true;
-      "python.linting.flake8Args" = [
-        "--ignore = E302"
-        "--max-line-length = 119"
-      ];
-      "python.testing.unittestEnabled" = true;
-
-      # Terraform settings
-      "terraform.indexing" = {
-        "enabled" = false;
-        "liveIndexing" = false;
-        "delay" = 500;
-        "exclude" = [
-          ".terraform/**/*"
-          "**/.terraform/**/*"
+        # Python settings
+        "python.formatting.provider" = "black";
+        "python.linting.flake8Enabled" = true;
+        "python.linting.flake8Args" = [
+          "--ignore = E302"
+          "--max-line-length = 119"
         ];
-      };
-      "terraform.languageServer.enable" = true;
+        "python.testing.unittestEnabled" = true;
 
-      # YAML settings
-      "yaml.schemaStore.enable" = true;
-      "yaml.validate" = true;
+        # Terraform settings
+        "terraform.indexing" = {
+          "enabled" = false;
+          "liveIndexing" = false;
+          "delay" = 500;
+          "exclude" = [
+            ".terraform/**/*"
+            "**/.terraform/**/*"
+          ];
+        };
+        "terraform.languageServer.enable" = true;
 
-      # Go settings
-      "go.toolsManagement.autoUpdate" = true;
+        # YAML settings
+        "yaml.schemaStore.enable" = true;
+        "yaml.validate" = true;
 
-      # Other settings
-      "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
-      "redhat.telemetry.enabled" = false;
-      "docker.showStartPage" = false;
+        # Go settings
+        "go.toolsManagement.autoUpdate" = true;
 
-      # GitHub Copilot settings
-      "github.copilot.enable" = {
-        "*" = true;
-        "yaml" = true;
-        "plaintext" = true;
-        "markdown" = true;
-      };
+        # Other settings
+        "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
+        "redhat.telemetry.enabled" = false;
+        "docker.showStartPage" = false;
+
+        # GitHub Copilot settings
+        "github.copilot.enable" = {
+          "*" = true;
+          "yaml" = true;
+          "plaintext" = true;
+          "markdown" = true;
+        };
       };
     };
   };
