@@ -20,6 +20,8 @@
     "redhat.vscode-yaml",
     "rust-lang.rust-analyzer",
     "timonwong.shellcheck",
-    "vscode-icons-team.vscode-icons"
+    "vscode-icons-team.vscode-icons",
+    "Ionide.Ionide-fsharp",
+    "ms-dotnettools.dotnet-maui"
   ]
 }
