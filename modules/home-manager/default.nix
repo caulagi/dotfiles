@@ -4,6 +4,7 @@
 
   imports = [
     ./bat
+    ./dotnet
     ./fish
     ./git
     ./lazygit
