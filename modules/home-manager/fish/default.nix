@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   programs.bash = {
     initExtra = ''
       if [[ $(${pkgs.procps}/bin/ps -p $PPID -o command | tail -n +2) != "fish"  ]]
@@ -42,4 +47,14 @@
       kcp = "kubectl --context gke_cdon-qlty_europe-north1-a_prod-cluster";
     };
   };
+
+  # Create omf directory structure for plugins
+  home.activation.setupOmf = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    OMF_DIR="${config.home.homeDirectory}/.local/share/omf"
+    if [ ! -d "$OMF_DIR" ]; then
+      echo "Creating OMF directory structure..."
+      mkdir -p "$OMF_DIR"
+      touch "$OMF_DIR/init.fish"
+    fi
+  '';
 }
