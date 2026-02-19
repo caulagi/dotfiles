@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "Ionide.Ionide-fsharp",
     "anthropic.claude-code",
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
@@ -11,6 +12,7 @@
     "hashicorp.terraform",
     "jdinhlife.gruvbox",
     "magicstack.magicpython",
+    "ms-dotnettools.dotnet-maui",
     "ms-python.debugpy",
     "ms-python.python",
     "ms-python.vscode-pylance",
@@ -20,8 +22,6 @@
     "redhat.vscode-yaml",
     "rust-lang.rust-analyzer",
     "timonwong.shellcheck",
-    "vscode-icons-team.vscode-icons",
-    "Ionide.Ionide-fsharp",
-    "ms-dotnettools.dotnet-maui"
+    "vscode-icons-team.vscode-icons"
   ]
 }

@@ -18,14 +18,14 @@ in {
         nativeBuildInputs = [pkgs.makeWrapper];
         postBuild = ''
           wrapProgram $out/bin/code \
-            --add-flags "--extensions-dir ${config.home.homeDirectory}/.vscode-extensions"
+            --add-flags "--extensions-dir ${config.xdg.dataHome}/vscode/extensions"
 
           # Create a script to install extensions
           cat > $out/bin/vscode-install-extensions << 'EOF'
           #!/bin/sh
           EXTENSIONS="${extensionsList}"
           for ext in $EXTENSIONS; do
-            ${pkgs.vscode}/bin/code --extensions-dir ${config.home.homeDirectory}/.vscode-extensions --install-extension "$ext" 2>/dev/null || true
+            ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" 2>/dev/null || true
           done
           EOF
           chmod +x $out/bin/vscode-install-extensions
@@ -171,7 +171,7 @@ in {
     echo "Installing VSCode extensions..."
     EXTENSIONS="${extensionsList}"
     for ext in $EXTENSIONS; do
-      $DRY_RUN_CMD ${pkgs.vscode}/bin/code --extensions-dir ${config.home.homeDirectory}/.vscode-extensions --install-extension "$ext" 2>/dev/null || true
+      $DRY_RUN_CMD ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" 2>/dev/null || true
     done
   '';
 }
