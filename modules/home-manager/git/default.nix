@@ -7,11 +7,13 @@
     enable = true;
     lfs.enable = true;
 
-    userName = "Pradip Caulagi";
-    userEmail = "caulagi@gmail.com";
     signing.key = "0179B829112D6737";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Pradip Caulagi";
+        email = "caulagi@gmail.com";
+      };
       color.ui = true;
       commit.gpgsign = true;
       core.ignorecase = false;
