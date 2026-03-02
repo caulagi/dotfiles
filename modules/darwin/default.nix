@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  lib,
+  username,
   ...
 }: {
   # here go the darwin preferences and config items
@@ -20,14 +22,14 @@
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  users.users.pradipcaulagi.home = "/Users/pradipcaulagi";
+  users.users.${username}.home = "/Users/${username}";
 
   networking = {
-    hostName = "pradipcaulagi-macbook";
+    hostName = "${username}-macbook";
   };
 
   system = {
-    primaryUser = "pradipcaulagi";
+    primaryUser = username;
     defaults = {
       finder.AppleShowAllExtensions = true;
       finder._FXShowPosixPathInTitle = true;

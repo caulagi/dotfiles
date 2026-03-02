@@ -1,2 +1,4 @@
+USER ?= $(shell whoami)
+
 switch:
-	sudo darwin-rebuild switch --flake .#pradipcaulagi
+	sudo -E darwin-rebuild switch --impure --flake .#$(USER)

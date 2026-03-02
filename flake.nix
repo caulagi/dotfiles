@@ -14,10 +14,19 @@
     home-manager,
     darwin,
     ...
-  }: {
+  }: let
+    username = let
+      sudoUser = builtins.getEnv "SUDO_USER";
+      currentUser = builtins.getEnv "USER";
+    in
+      if sudoUser != ""
+      then sudoUser
+      else currentUser;
+  in {
     formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    darwinConfigurations.pradipcaulagi = darwin.lib.darwinSystem {
+    darwinConfigurations.${username} = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+      specialArgs = {inherit username;};
       pkgs = import nixpkgs {
         system = "aarch64-darwin";
         config.allowUnfree = true;
@@ -29,7 +38,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.pradipcaulagi.imports = [./modules/home-manager];
+            users.${username}.imports = [./modules/home-manager];
           };
         }
         ./modules/environment.nix
