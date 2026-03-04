@@ -74,7 +74,12 @@
     # backwards compat; don't change
     stateVersion = 4;
 
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.bashInteractive}/bin/bash''; # Since it's not possible to declare default shell, run this command after build
+    activationScripts.postActivation.text = ''
+      if ! dscl . -read /Users/${username} UserShell | grep -q "${pkgs.bashInteractive}/bin/bash"; then
+        echo "Setting shell for ${username} to ${pkgs.bashInteractive}/bin/bash"
+        sudo chsh -s ${pkgs.bashInteractive}/bin/bash ${username}
+      fi
+    '';
   };
 
   # Temporarily disable homebrew due to macOS 26.0.1 compatibility issues
