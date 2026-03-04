@@ -11,6 +11,7 @@
     systemPackages = [pkgs.coreutils];
     systemPath = ["/opt/homebrew/bin"];
     pathsToLink = ["/Applications"];
+    shells = [pkgs.bashInteractive pkgs.fish];
   };
 
   nix.extraOptions = ''
