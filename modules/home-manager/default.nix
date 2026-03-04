@@ -52,6 +52,8 @@
     watch
     wget
   ];
+  xdg.enable = true;
+
   home.sessionVariables = {
     HISTFILE = "$XDG_DATA_HOME/bash_history";
     PAGER = "less";
