@@ -66,7 +66,7 @@
   # https://nix-community.github.io/home-manager/options.html
   programs.zoxide = {
     enable = true;
-    options = ["--cmd j"];
+    options = ["--cmd z"];
     enableBashIntegration = true;
     enableFishIntegration = true;
   };
