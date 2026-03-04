@@ -28,11 +28,6 @@
       push.recurseSubmodules = "on-demand";
       rebase.autoStash = true;
       status.submoduleSummary = "1";
-      url = {
-        "ssh://git@github.com/" = {
-          insteadOf = "https://github.com/";
-        };
-      };
     };
   };
 }
