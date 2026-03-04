@@ -15,30 +15,34 @@
     darwin,
     ...
   }: let
-    mkDarwinConfig = username:
-      darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {inherit username;};
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config.allowUnfree = true;
-        };
-        modules = [
-          ./modules/darwin
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${username}.imports = [./modules/home-manager];
-            };
-          }
-          ./modules/environment.nix
-        ];
-      };
+    usersConfig = import ./modules/darwin/users.nix;
+    pkgs = nixpkgs.legacyPackages.aarch64-darwin;
   in {
-    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
-    darwinConfigurations.pradipcaulagi = mkDarwinConfig "pradipcaulagi";
-    darwinConfigurations.otheruser = mkDarwinConfig "pcaulagi";
+    formatter.aarch64-darwin = pkgs.alejandra;
+
+    darwinConfigurations.darwin = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      pkgs = import nixpkgs {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
+      modules = [
+        ./modules/darwin
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users = pkgs.lib.genAttrs usersConfig.users (user: {
+              imports = [
+                ./modules/home-manager
+                usersConfig.darwinHomeManager
+              ];
+            });
+          };
+        }
+        ./modules/environment.nix
+      ];
+    };
   };
 }

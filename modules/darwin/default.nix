@@ -2,9 +2,10 @@
   config,
   pkgs,
   lib,
-  username,
   ...
-}: {
+}: let
+  usersConfig = import ./users.nix;
+in {
   # here go the darwin preferences and config items
   programs.bash.enable = true;
   environment = {
@@ -23,63 +24,35 @@
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  users.users.${username}.home = "/Users/${username}";
+  users.users = lib.genAttrs usersConfig.users (user: {
+    home = "/Users/${user}";
+  });
 
   networking = {
-    hostName = "${username}-macbook";
+    hostName = "pradipcaulagi-macbook";
   };
 
   system = {
-    primaryUser = username;
     defaults = {
-      finder.AppleShowAllExtensions = true;
-      finder._FXShowPosixPathInTitle = true;
-      # don't show desktop icons
-      finder.CreateDesktop = false;
-      # default to list view
-      finder.FXPreferredViewStyle = "Nlsv";
-      dock.autohide = true;
-      dock.autohide-delay = 0.01;
-      dock.autohide-time-modifier = 0.01;
-      dock.show-recents = false;
-
       CustomSystemPreferences = {
         NSGlobalDomain = {
           NSWindowShouldDragOnGesture = true;
         };
       };
-
-      NSGlobalDomain = {
-        "com.apple.sound.beep.feedback" = 0;
-        "com.apple.sound.beep.volume" = 0.0;
-
-        # full keyboard control
-        AppleKeyboardUIMode = 3;
-
-        # allow key repeat
-        ApplePressAndHoldEnabled = false;
-        # delay before repeating keystrokes
-        InitialKeyRepeat = 15; # normal minimum is 15 (225 ms)
-        # delay between repeated keystrokes upon holding a key
-        KeyRepeat = 2; # normal minimum is 2 (30 ms)
-        AppleShowAllExtensions = true;
-        # AppleShowScrollBars = "Automatic";
-
-        # Reduce window animations
-        NSWindowResizeTime = 0.1;
-
-        # window open/close animation
-        NSAutomaticWindowAnimationsEnabled = false;
-      };
     };
-    # backwards compat; don't change
     stateVersion = 4;
 
-    activationScripts.postActivation.text = ''
-      if ! dscl . -read /Users/${username} UserShell | grep -q "${pkgs.bashInteractive}/bin/bash"; then
-        echo "Setting shell for ${username} to ${pkgs.bashInteractive}/bin/bash"
-        sudo chsh -s ${pkgs.bashInteractive}/bin/bash ${username}
-      fi
+    activationScripts.postActivation.text = let
+      userList = lib.concatStringsSep " " usersConfig.users;
+    in ''
+      for user in ${userList}; do
+        if id "$user" &>/dev/null; then
+          if ! dscl . -read /Users/$user UserShell | grep -q "${pkgs.bashInteractive}/bin/bash"; then
+            echo "Setting shell for $user to ${pkgs.bashInteractive}/bin/bash"
+            sudo chsh -s ${pkgs.bashInteractive}/bin/bash $user
+          fi
+        fi
+      done
     '';
   };
 
