@@ -38,10 +38,6 @@
     ];
     shellAliases = {
       k = "kubectl";
-      kfi = "kubectl --context gke_fyndiq_europe-west1-b_integration-cluster";
-      kfp = "kubectl --context gke_fyndiq_europe-north1-a_prod-cluster";
-      kci = "kubectl --context gke_cdon-qlty_europe-west1-b_integration-cluster";
-      kcp = "kubectl --context gke_cdon-qlty_europe-north1-a_prod-cluster";
     };
   };
 
