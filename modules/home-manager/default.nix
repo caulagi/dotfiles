@@ -68,10 +68,12 @@
     enable = true;
     options = ["--cmd j"];
     enableBashIntegration = true;
+    enableFishIntegration = true;
   };
 
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
+  programs.fzf.enableFishIntegration = true;
   programs.eza.enable = true;
 
   programs.bash.enable = true;
