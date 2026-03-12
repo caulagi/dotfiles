@@ -143,25 +143,7 @@ in {
           "*" = true;
         };
 
-        "claudeCode.environmentVariables" = [
-          {
-            "name" = "CLAUDE_CODE_USE_VERTEX";
-            "value" = "true";
-          }
-          {
-            "name" = "CLOUD_ML_REGION";
-            "value" = "europe-west1";
-          }
-          {
-            "name" = "ANTHROPIC_VERTEX_PROJECT_ID";
-            "value" = "platform-ai-hub-infra-0c91";
-          }
-          {
-            "name" = "ANTHROPIC_MODEL";
-            "value" = "claude-sonnet-4-5@20250929";
-          }
-        ];
-        "claudeCode.selectedModel" = "claude-sonnet-4-5@20250929";
+        "claudeCode.selectedModel" = "claude-opus-4-6";
       };
     };
   };
