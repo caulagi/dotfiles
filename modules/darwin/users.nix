@@ -1,7 +1,8 @@
 {
   users = ["pradipcaulagi" "pcaulagi"];
 
-  darwinHomeManager = {...}: {
+  darwinHomeManager = {pkgs, ...}: {
+    home.packages = [pkgs.docker-credential-helpers];
     targets.darwin.defaults = {
       "com.apple.finder" = {
         AppleShowAllExtensions = true;
