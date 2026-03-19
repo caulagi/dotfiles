@@ -34,9 +34,11 @@ in {
       // {
         pname = pkgs.vscode.pname;
         version = pkgs.vscode.version;
-        meta = pkgs.vscode.meta // {
-          mainProgram = "code";
-        };
+        meta =
+          pkgs.vscode.meta
+          // {
+            mainProgram = "code";
+          };
       };
     mutableExtensionsDir = true;
 
@@ -143,7 +145,7 @@ in {
           "*" = true;
         };
 
-        "claudeCode.selectedModel" = "claude-opus-4-6";
+        "claudeCode.selectedModel" = "opus[1m]";
       };
     };
   };
