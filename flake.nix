@@ -46,8 +46,8 @@
       ];
     };
 
-    apps.aarch64-darwin.dotnet = import ./apps/dotnet.nix {pkgs = nixpkgs.legacyPackages.aarch64-darwin;};
-    apps.x86_64-linux.dotnet = import ./apps/dotnet.nix {pkgs = nixpkgs.legacyPackages.x86_64-linux;};
+    packages.aarch64-darwin.dotnet = import ./pkgs/dotnet.nix {pkgs = nixpkgs.legacyPackages.aarch64-darwin;};
+    packages.x86_64-linux.dotnet = import ./pkgs/dotnet.nix {pkgs = nixpkgs.legacyPackages.x86_64-linux;};
 
     homeConfigurations.playgroundpc = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
