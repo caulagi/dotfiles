@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  programs.pyenv.enable = true;
+  programs.pyenv.enable = false;
 }
