@@ -1,3 +1,0 @@
-alias obelisk='cd ~/starstable/src/obelisk'
-alias k='kubectl'
-alias randompass='openssl rand -base64 12'

@@ -1,2 +1,0 @@
-setxkbmap -layout se
-exec i3
