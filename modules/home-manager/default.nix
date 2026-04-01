@@ -42,7 +42,6 @@
     lazygit
     less
     neovim-remote
-    nixpkgs-fmt
     nodejs_24
     pre-commit
     ripgrep
