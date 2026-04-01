@@ -2,10 +2,9 @@
   config,
   pkgs,
   lib,
+  host,
   ...
-}: let
-  usersConfig = import ./users.nix;
-in {
+}: {
   # here go the darwin preferences and config items
   programs.bash.enable = true;
   environment = {
@@ -24,12 +23,12 @@ in {
   # Add ability to used TouchID for sudo authentication
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  users.users = lib.genAttrs usersConfig.users (user: {
+  users.users = lib.genAttrs host.users (user: {
     home = "/Users/${user}";
   });
 
   networking = {
-    hostName = "pradipcaulagi-macbook";
+    hostName = host.hostname;
   };
 
   system = {
@@ -43,7 +42,7 @@ in {
     stateVersion = 4;
 
     activationScripts.postActivation.text = let
-      userList = lib.concatStringsSep " " usersConfig.users;
+      userList = lib.concatStringsSep " " host.users;
     in ''
       for user in ${userList}; do
         if id "$user" &>/dev/null; then
