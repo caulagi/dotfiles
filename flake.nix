@@ -19,6 +19,7 @@
     pkgs = nixpkgs.legacyPackages.aarch64-darwin;
   in {
     formatter.aarch64-darwin = pkgs.alejandra;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     darwinConfigurations.darwin = darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -42,6 +43,20 @@
           };
         }
         ./modules/environment.nix
+      ];
+    };
+
+    homeConfigurations.playgroundpc = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+      modules = [
+        ./modules/home-manager
+        {
+          home.username = "playgroundpc";
+          home.homeDirectory = "/home/playgroundpc";
+        }
       ];
     };
   };

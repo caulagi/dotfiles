@@ -71,6 +71,8 @@
     enableFishIntegration = true;
   };
 
+  programs.home-manager.enable = true;
+
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableFishIntegration = true;
