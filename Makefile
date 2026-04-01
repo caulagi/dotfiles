@@ -1,5 +1,5 @@
 switch:
-	sudo -E darwin-rebuild switch --impure --flake .#darwin
+	sudo darwin-rebuild switch --flake .#darwin
 
 switch-linux:
 	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && home-manager switch --flake .#playgroundpc
