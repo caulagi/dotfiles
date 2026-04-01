@@ -3,7 +3,7 @@
     system = "aarch64-darwin";
     isDarwin = true;
     hostname = "pradipcaulagi-macbook";
-    users = ["pradipcaulagi" "pcaulagi"];
+    users = ["pradipcaulagi" "pcaulagi" "nixuser2"];
   };
 
   home-laptop = {

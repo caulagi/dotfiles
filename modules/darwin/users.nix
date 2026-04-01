@@ -1,7 +1,4 @@
-{
-  users = ["pradipcaulagi" "pcaulagi"];
-
-  darwinHomeManager = {pkgs, ...}: {
+{pkgs, ...}: {
     home.packages = [pkgs.docker-credential-helpers];
     targets.darwin.defaults = {
       "com.apple.finder" = {
@@ -30,5 +27,4 @@
         NSAutomaticWindowAnimationsEnabled = false;
       };
     };
-  };
 }

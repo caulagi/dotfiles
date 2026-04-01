@@ -16,7 +16,6 @@
     ...
   }: let
     hosts = import ./hosts.nix;
-    usersConfig = import ./modules/darwin/users.nix;
 
     mkDarwinHost = name: host:
       darwin.lib.darwinSystem {
@@ -36,7 +35,7 @@
               users = nixpkgs.legacyPackages.${host.system}.lib.genAttrs host.users (user: {
                 imports = [
                   ./modules/home-manager
-                  usersConfig.darwinHomeManager
+                  ./modules/darwin/users.nix
                 ];
               });
             };
