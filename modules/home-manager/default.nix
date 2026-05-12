@@ -55,7 +55,8 @@
 
   home.sessionVariables = {
     HISTFILE = "$XDG_DATA_HOME/bash_history";
-    PAGER = "less";
+    PAGER = "less -R";
+    LESS = "-R";
     CLICLOLOR = 1;
     PATH = "$PATH:$HOME/go/bin";
     EDITOR = "nvim";
