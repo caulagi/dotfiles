@@ -16,3 +16,12 @@ pwsh -File windows/install-wezterm.ps1
 Installs WezTerm via `winget` and copies `wezterm.lua` to
 `%USERPROFILE%\.wezterm.lua`. The config opens directly into the Ubuntu WSL
 distro and mirrors the look of the old in-distro WezTerm config.
+
+## FiraCode Nerd Font
+
+```powershell
+pwsh -File windows/install-firacode.ps1
+```
+
+Installs FiraCode Nerd Font for the current user. Referenced by the WezTerm
+config above and the VSCode editor font.
