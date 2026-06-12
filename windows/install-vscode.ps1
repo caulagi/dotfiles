@@ -24,6 +24,18 @@ $code = if ($codeCmd) { $codeCmd.Source } else {
 }
 if (-not $code) { throw 'Could not locate the VSCode `code` CLI.' }
 
+# VSCode/Electron uses Node's bundled CA list, not the Windows cert store, so on
+# a network with a TLS-inspecting proxy (corporate root CA) marketplace
+# downloads fail with "self signed certificate in certificate chain". Export the
+# Windows trusted roots to a PEM and point Node at it for the install.
+$caBundle = Join-Path $env:TEMP 'windows-root-cas.pem'
+$pem = Get-ChildItem Cert:\LocalMachine\Root | ForEach-Object {
+    $b64 = [System.Convert]::ToBase64String($_.RawData, 'InsertLineBreaks')
+    "-----BEGIN CERTIFICATE-----`n$b64`n-----END CERTIFICATE-----"
+}
+Set-Content -Path $caBundle -Value ($pem -join "`n") -Encoding ascii
+$env:NODE_EXTRA_CA_CERTS = $caBundle
+
 # Install the recommended extensions. Single source of truth is the Nix module's
 # extensions.json, so the host and WSL stay in sync.
 $extJson = Join-Path $PSScriptRoot '..\modules\home-manager\vscode\extensions.json'
