@@ -2,7 +2,7 @@
 # Installs FiraCode Nerd Font for the current user (no admin required).
 # Used by the WezTerm terminal config and the VSCode editor font.
 #
-#   pwsh -File windows/install-firacode.ps1
+#   pwsh -ExecutionPolicy Bypass -File windows/install-firacode.ps1
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 

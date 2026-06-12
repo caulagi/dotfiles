@@ -4,7 +4,7 @@
 # settings (look and feel). VSCode runs on Windows for WSL development, so this
 # is the host-side counterpart of that module.
 #
-#   pwsh -File windows/install-vscode.ps1
+#   pwsh -ExecutionPolicy Bypass -File windows/install-vscode.ps1
 $ErrorActionPreference = 'Stop'
 
 # Ensure VSCode is installed.

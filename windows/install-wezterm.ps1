@@ -5,7 +5,7 @@
 # WezTerm is the terminal emulator; it runs on Windows, not inside WSL, so it
 # cannot be installed via Nix/home-manager. Run this from Windows PowerShell:
 #
-#   pwsh -File windows/install-wezterm.ps1
+#   pwsh -ExecutionPolicy Bypass -File windows/install-wezterm.ps1
 #
 # After install, set WezTerm as the default terminal in
 # Settings -> Privacy & security -> For developers -> Terminal, or just launch

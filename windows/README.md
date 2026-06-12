@@ -5,12 +5,16 @@ environment configured by Nix/home-manager (the `wsl` host in `hosts.nix`).
 
 A terminal emulator and fonts live on the Windows host, not inside the distro,
 so they cannot be managed by home-manager. Run these scripts from Windows
-PowerShell (`pwsh`):
+PowerShell (`pwsh`).
+
+Because the scripts live on the WSL `\\wsl.localhost\...` path, Windows treats
+them as remote and the default execution policy blocks them, so each command
+passes `-ExecutionPolicy Bypass`.
 
 ## WezTerm
 
 ```powershell
-pwsh -File windows/install-wezterm.ps1
+pwsh -ExecutionPolicy Bypass -File windows/install-wezterm.ps1
 ```
 
 Installs WezTerm via `winget` and copies `wezterm.lua` to
@@ -20,7 +24,7 @@ distro and mirrors the look of the old in-distro WezTerm config.
 ## FiraCode Nerd Font
 
 ```powershell
-pwsh -File windows/install-firacode.ps1
+pwsh -ExecutionPolicy Bypass -File windows/install-firacode.ps1
 ```
 
 Installs FiraCode Nerd Font for the current user. Referenced by the WezTerm
@@ -29,7 +33,7 @@ config above and the VSCode editor font.
 ## VSCode
 
 ```powershell
-pwsh -File windows/install-vscode.ps1
+pwsh -ExecutionPolicy Bypass -File windows/install-vscode.ps1
 ```
 
 Installs VSCode (if missing), the recommended extensions, and the editor
