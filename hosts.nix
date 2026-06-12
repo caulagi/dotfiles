@@ -12,4 +12,12 @@
     hostname = "home-laptop";
     users = ["pcaulagi"];
   };
+
+  wsl = {
+    system = "x86_64-linux";
+    isDarwin = false;
+    isWsl = true;
+    hostname = "SEC56565";
+    users = ["icw099"];
+  };
 }

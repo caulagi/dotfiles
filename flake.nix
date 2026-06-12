@@ -32,6 +32,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {inherit host;};
               users = nixpkgs.legacyPackages.${host.system}.lib.genAttrs host.users (user: {
                 imports = [
                   ./modules/home-manager
@@ -50,6 +51,7 @@
           system = host.system;
           config.allowUnfree = true;
         };
+        extraSpecialArgs = {inherit host;};
         modules =
           map (user: {
             home.username = user;

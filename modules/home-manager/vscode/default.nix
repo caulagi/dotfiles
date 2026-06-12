@@ -25,7 +25,7 @@ in {
           #!/bin/sh
           EXTENSIONS="${extensionsList}"
           for ext in $EXTENSIONS; do
-            ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" 2>/dev/null || true
+            env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
           done
           EOF
           chmod +x $out/bin/vscode-install-extensions
@@ -150,12 +150,16 @@ in {
     };
   };
 
-  # Automatically install extensions on activation
+  # Automatically install extensions on activation.
+  # DONT_PROMPT_WSL_INSTALL suppresses the interactive "install VS Code in
+  # Windows instead" prompt the Linux `code` CLI shows under WSL (it reads from
+  # /dev/tty, so it would otherwise hang the activation). stdin is also closed
+  # as a belt-and-suspenders against any other prompt.
   home.activation.installVSCodeExtensions = lib.hm.dag.entryAfter ["writeBoundary"] ''
     echo "Installing VSCode extensions..."
     EXTENSIONS="${extensionsList}"
     for ext in $EXTENSIONS; do
-      $DRY_RUN_CMD ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" 2>/dev/null || true
+      $DRY_RUN_CMD env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
     done
   '';
 }
