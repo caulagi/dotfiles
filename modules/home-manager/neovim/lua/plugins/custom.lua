@@ -362,37 +362,11 @@ return {
 		},
 	},
 
-	-- add tsserver and setup with typescript.nvim instead of lspconfig
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"jose-elias-alvarez/typescript.nvim",
-		},
-		keys = {
-			{ "<leader>co", "TypescriptOrganizeImports", desc = "Organize Imports", ft = "typescript" },
-			{ "<leader>cR", "TypescriptRenameFile", desc = "Rename File", ft = "typescript" },
-		},
-		---@class PluginLspOpts
-		opts = {
-			---@type lspconfig.options
-			servers = {
-				-- tsserver will be automatically installed with mason and loaded with lspconfig
-				tsserver = {},
-			},
-			-- you can do any additional lsp server setup here
-			-- return true if you don't want this server to be setup with lspconfig
-			---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-			setup = {
-				-- example to setup with typescript.nvim
-				tsserver = function(_, opts)
-					require("typescript").setup({ server = opts })
-					return true
-				end,
-				-- Specify * to use this function as a fallback for any server
-				-- ["*"] = function(server, opts) end,
-			},
-		},
-	},
+	-- TypeScript LSP is provided by `lazyvim.plugins.extras.lang.typescript`
+	-- (imported in lua/config/lazy.lua), which uses vtsls. The old
+	-- jose-elias-alvarez/typescript.nvim plugin was archived/removed from
+	-- GitHub and must not be referenced here — it fails to clone and breaks
+	-- the entire plugin sync ("Too many rounds of missing plugins").
 
 	-- add more treesitter parsers
 	{
