@@ -1,10 +1,13 @@
 {
   config,
   pkgs,
+  host ? {},
   ...
 }: {
   programs.wezterm = {
-    enable = true;
+    # On WSL the terminal emulator is the Windows-side WezTerm (configured via
+    # %USERPROFILE%\.wezterm.lua); a Linux build inside the distro is unused.
+    enable = !(host.isWsl or false);
     extraConfig = ''
       local wezterm = require 'wezterm';
       return {
