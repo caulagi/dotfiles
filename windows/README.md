@@ -40,3 +40,11 @@ Installs VSCode (if missing), the recommended extensions, and the editor
 settings (look and feel) on the host. Mirrors `modules/home-manager/vscode`;
 extensions come from that module's `extensions.json` so host and WSL stay in
 sync, and settings are written to `%APPDATA%\Code\User\settings.json`.
+
+## PowerToys
+
+```powershell
+pwsh -ExecutionPolicy Bypass -File windows/install-powertoys.ps1
+```
+
+Installs Microsoft PowerToys via `winget`.
