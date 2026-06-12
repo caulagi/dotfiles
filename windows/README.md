@@ -25,3 +25,14 @@ pwsh -File windows/install-firacode.ps1
 
 Installs FiraCode Nerd Font for the current user. Referenced by the WezTerm
 config above and the VSCode editor font.
+
+## VSCode
+
+```powershell
+pwsh -File windows/install-vscode.ps1
+```
+
+Installs VSCode (if missing), the recommended extensions, and the editor
+settings (look and feel) on the host. Mirrors `modules/home-manager/vscode`;
+extensions come from that module's `extensions.json` so host and WSL stay in
+sync, and settings are written to `%APPDATA%\Code\User\settings.json`.

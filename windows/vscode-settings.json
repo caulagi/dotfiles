@@ -1,0 +1,76 @@
+{
+  "vs-kubernetes.crd-code-completion": "enabled",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.renderWhitespace": "all",
+  "editor.suggestSelection": "first",
+  "editor.find.addExtraSpaceOnTop": false,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.fontSize": 13,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "*.hcl": "terraform",
+    "*.j2": "python",
+    "*.tfvars": "terraform",
+    "*.yml": "yaml"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[python]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "python.formatting.provider": "black",
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--ignore = E302",
+    "--max-line-length = 119"
+  ],
+  "python.testing.unittestEnabled": true,
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [
+      ".terraform/**/*",
+      "**/.terraform/**/*"
+    ]
+  },
+  "terraform.languageServer.enable": true,
+  "yaml.schemaStore.enable": true,
+  "yaml.validate": true,
+  "go.toolsManagement.autoUpdate": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "redhat.telemetry.enabled": false,
+  "docker.showStartPage": false,
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true
+  },
+  "github.copilot.chat.enable": {
+    "*": true
+  },
+  "claudeCode.selectedModel": "opus[1m]"
+}
