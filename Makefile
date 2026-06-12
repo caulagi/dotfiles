@@ -10,6 +10,9 @@ switch-linux:
 		fi; \
 	done
 
+switch-wsl:
+	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && home-manager switch --flake .#wsl
+
 bootstrap-cloudshell:
 	curl -fsSL https://install.determinate.systems/nix | sh -s -- install linux --no-start-daemon
 	. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -26,4 +29,4 @@ bootstrap-wsl:
 	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && \
 		nix run home-manager/master -- switch --flake .#wsl -b backup
 
-.PHONY: switch switch-linux bootstrap-cloudshell bootstrap-wsl
+.PHONY: switch switch-linux switch-wsl bootstrap-cloudshell bootstrap-wsl
