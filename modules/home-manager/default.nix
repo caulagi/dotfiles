@@ -50,6 +50,7 @@
     terraform
     watch
     wget
+    unzip
   ];
   xdg.enable = true;
 
