@@ -123,14 +123,14 @@ return {
 			vim.g.copilot_assume_mapped = true
 
 			-- Custom keymaps
-			vim.keymap.set('i', '<M-l>', 'copilot#Accept("\\<CR>")', {
+			vim.keymap.set("i", "<M-l>", 'copilot#Accept("\\<CR>")', {
 				expr = true,
 				replace_keycodes = false,
-				desc = "Accept Copilot suggestion"
+				desc = "Accept Copilot suggestion",
 			})
-			vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)', { desc = "Next Copilot suggestion" })
-			vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)', { desc = "Previous Copilot suggestion" })
-			vim.keymap.set('i', '<C-]>', '<Plug>(copilot-dismiss)', { desc = "Dismiss Copilot suggestion" })
+			vim.keymap.set("i", "<M-]>", "<Plug>(copilot-next)", { desc = "Next Copilot suggestion" })
+			vim.keymap.set("i", "<M-[>", "<Plug>(copilot-previous)", { desc = "Previous Copilot suggestion" })
+			vim.keymap.set("i", "<C-]>", "<Plug>(copilot-dismiss)", { desc = "Dismiss Copilot suggestion" })
 		end,
 	},
 
@@ -148,19 +148,19 @@ return {
 			proxy = nil, -- [protocol://]host[:port] Use this proxy
 			allow_insecure = false, -- Allow insecure server connections
 			system_prompt = "You are a helpful AI assistant.", -- System prompt to use
-			model = 'gpt-4', -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
+			model = "gpt-4", -- GPT model to use, 'gpt-3.5-turbo' or 'gpt-4'
 			temperature = 0.1, -- GPT temperature
-			question_header = '## User ', -- Header to use for user questions
-			answer_header = '## Copilot ', -- Header to use for AI answers
-			error_header = '## Error ', -- Header to use for errors
-			separator = '---', -- Separator to use in chat
+			question_header = "## User ", -- Header to use for user questions
+			answer_header = "## Copilot ", -- Header to use for AI answers
+			error_header = "## Error ", -- Header to use for errors
+			separator = "---", -- Separator to use in chat
 			show_folds = true, -- Shows folds for sections in chat
 			show_help = true, -- Shows help message as virtual lines when waiting for user input
 			auto_follow_cursor = true, -- Auto-follow cursor in chat
 			auto_insert_mode = false, -- Automatically enter insert mode when opening window and if auto follow cursor is enabled on new prompt
 			clear_chat_on_new_prompt = false, -- Clears chat on every new prompt
 			context = nil, -- Default context to use, 'buffers', 'buffer' or none (can be specified manually in prompt via @).
-			history_path = vim.fn.stdpath('data') .. '/copilotchat_history', -- Default path to stored history
+			history_path = vim.fn.stdpath("data") .. "/copilotchat_history", -- Default path to stored history
 			callback = nil, -- Callback to use when ask response is received
 		},
 		keys = {
@@ -433,7 +433,6 @@ return {
 				"stylua",
 				"shellcheck",
 				"shfmt",
-				"flake8",
 			},
 		},
 	},
