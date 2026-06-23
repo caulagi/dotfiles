@@ -16,7 +16,6 @@
   ];
 
   home.packages = with pkgs; [
-    claude-code
     colima
     curl
     delta

@@ -39,6 +39,7 @@
     shellAliases = {
       k = "kubectl";
       onedrive = "cd '/mnt/c/Users/icw099/OneDrive - ICA'";
+      claude = "npx @anthropic-ai/claude-code";
     };
   };
 
