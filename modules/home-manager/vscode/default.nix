@@ -2,164 +2,168 @@
   pkgs,
   lib,
   config,
+  host,
   ...
 }: let
   extensionsJson = ./extensions.json;
   extensionsData = builtins.fromJSON (builtins.readFile extensionsJson);
   extensionsList = builtins.concatStringsSep " " extensionsData.recommendations;
-in {
-  programs.vscode = {
-    enable = true;
-    # Wrap VSCode to use custom extensions directory and install extensions
-    package =
-      (pkgs.symlinkJoin {
-        name = "vscode-wrapped";
-        paths = [pkgs.vscode];
-        nativeBuildInputs = [pkgs.makeWrapper];
-        postBuild = ''
-          wrapProgram $out/bin/code \
-            --add-flags "--extensions-dir ${config.xdg.dataHome}/vscode/extensions"
+in
+  # VSCode runs on the Windows host for WSL development (see windows/install-vscode.ps1),
+  # so don't install the Linux build inside the WSL distro.
+  lib.mkIf (!(host.isWsl or false)) {
+    programs.vscode = {
+      enable = true;
+      # Wrap VSCode to use custom extensions directory and install extensions
+      package =
+        (pkgs.symlinkJoin {
+          name = "vscode-wrapped";
+          paths = [pkgs.vscode];
+          nativeBuildInputs = [pkgs.makeWrapper];
+          postBuild = ''
+            wrapProgram $out/bin/code \
+              --add-flags "--extensions-dir ${config.xdg.dataHome}/vscode/extensions"
 
-          # Create a script to install extensions
-          cat > $out/bin/vscode-install-extensions << 'EOF'
-          #!/bin/sh
-          EXTENSIONS="${extensionsList}"
-          for ext in $EXTENSIONS; do
-            env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
-          done
-          EOF
-          chmod +x $out/bin/vscode-install-extensions
-        '';
-      })
-      // {
-        pname = pkgs.vscode.pname;
-        version = pkgs.vscode.version;
-        meta =
-          pkgs.vscode.meta
-          // {
-            mainProgram = "code";
+            # Create a script to install extensions
+            cat > $out/bin/vscode-install-extensions << 'EOF'
+            #!/bin/sh
+            EXTENSIONS="${extensionsList}"
+            for ext in $EXTENSIONS; do
+              env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
+            done
+            EOF
+            chmod +x $out/bin/vscode-install-extensions
+          '';
+        })
+        // {
+          pname = pkgs.vscode.pname;
+          version = pkgs.vscode.version;
+          meta =
+            pkgs.vscode.meta
+            // {
+              mainProgram = "code";
+            };
+        };
+      mutableExtensionsDir = true;
+
+      profiles.default = {
+        # Let Nix be the single source of truth
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
+
+        userSettings = {
+          # Kubernetes settings
+          "vs-kubernetes.crd-code-completion" = "enabled";
+
+          # Editor settings
+          "editor.fontLigatures" = true;
+          "editor.fontFamily" = "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+          "editor.renderWhitespace" = "all";
+          "editor.suggestSelection" = "first";
+          "editor.find.addExtraSpaceOnTop" = false;
+          "editor.minimap.enabled" = false;
+          "editor.inlineSuggest.enabled" = true;
+          "editor.fontSize" = 13;
+          "editor.multiCursorModifier" = "ctrlCmd";
+
+          # Workbench settings
+          "workbench.startupEditor" = "newUntitledFile";
+          "workbench.editor.enablePreview" = false;
+          "workbench.editor.enablePreviewFromQuickOpen" = false;
+          "workbench.iconTheme" = "vscode-icons";
+          "workbench.colorTheme" = "Gruvbox Dark Medium";
+          "workbench.editorAssociations" = {
+            "*.ipynb" = "jupyter.notebook.ipynb";
           };
-      };
-    mutableExtensionsDir = true;
 
-    profiles.default = {
-      # Let Nix be the single source of truth
-      enableUpdateCheck = false;
-      enableExtensionUpdateCheck = false;
+          # Files settings
+          "files.autoSave" = "afterDelay";
+          "files.trimTrailingWhitespace" = true;
+          "files.associations" = {
+            "*.hcl" = "terraform";
+            "*.j2" = "python";
+            "*.tfvars" = "terraform";
+            "*.yml" = "yaml";
+          };
 
-      userSettings = {
-        # Kubernetes settings
-        "vs-kubernetes.crd-code-completion" = "enabled";
+          # Explorer settings
+          "explorer.confirmDelete" = false;
+          "explorer.confirmDragAndDrop" = false;
 
-        # Editor settings
-        "editor.fontLigatures" = true;
-        "editor.fontFamily" = "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace";
-        "editor.renderWhitespace" = "all";
-        "editor.suggestSelection" = "first";
-        "editor.find.addExtraSpaceOnTop" = false;
-        "editor.minimap.enabled" = false;
-        "editor.inlineSuggest.enabled" = true;
-        "editor.fontSize" = 13;
-        "editor.multiCursorModifier" = "ctrlCmd";
+          # Language specific settings
+          "[dockerfile]" = {
+            "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
+          };
+          "[python]" = {
+            "editor.formatOnPaste" = false;
+            "editor.formatOnSave" = true;
+          };
+          "[json]" = {
+            "editor.tabSize" = 2;
+          };
+          "[terraform]" = {
+            "editor.defaultFormatter" = "hashicorp.terraform";
+          };
 
-        # Workbench settings
-        "workbench.startupEditor" = "newUntitledFile";
-        "workbench.editor.enablePreview" = false;
-        "workbench.editor.enablePreviewFromQuickOpen" = false;
-        "workbench.iconTheme" = "vscode-icons";
-        "workbench.colorTheme" = "Gruvbox Dark Medium";
-        "workbench.editorAssociations" = {
-          "*.ipynb" = "jupyter.notebook.ipynb";
-        };
-
-        # Files settings
-        "files.autoSave" = "afterDelay";
-        "files.trimTrailingWhitespace" = true;
-        "files.associations" = {
-          "*.hcl" = "terraform";
-          "*.j2" = "python";
-          "*.tfvars" = "terraform";
-          "*.yml" = "yaml";
-        };
-
-        # Explorer settings
-        "explorer.confirmDelete" = false;
-        "explorer.confirmDragAndDrop" = false;
-
-        # Language specific settings
-        "[dockerfile]" = {
-          "editor.defaultFormatter" = "ms-azuretools.vscode-docker";
-        };
-        "[python]" = {
-          "editor.formatOnPaste" = false;
-          "editor.formatOnSave" = true;
-        };
-        "[json]" = {
-          "editor.tabSize" = 2;
-        };
-        "[terraform]" = {
-          "editor.defaultFormatter" = "hashicorp.terraform";
-        };
-
-        # Python settings
-        "python.formatting.provider" = "black";
-        "python.linting.flake8Enabled" = true;
-        "python.linting.flake8Args" = [
-          "--ignore = E302"
-          "--max-line-length = 119"
-        ];
-        "python.testing.unittestEnabled" = true;
-
-        # Terraform settings
-        "terraform.indexing" = {
-          "enabled" = false;
-          "liveIndexing" = false;
-          "delay" = 500;
-          "exclude" = [
-            ".terraform/**/*"
-            "**/.terraform/**/*"
+          # Python settings
+          "python.formatting.provider" = "black";
+          "python.linting.flake8Enabled" = true;
+          "python.linting.flake8Args" = [
+            "--ignore = E302"
+            "--max-line-length = 119"
           ];
+          "python.testing.unittestEnabled" = true;
+
+          # Terraform settings
+          "terraform.indexing" = {
+            "enabled" = false;
+            "liveIndexing" = false;
+            "delay" = 500;
+            "exclude" = [
+              ".terraform/**/*"
+              "**/.terraform/**/*"
+            ];
+          };
+          "terraform.languageServer.enable" = true;
+
+          # YAML settings
+          "yaml.schemaStore.enable" = true;
+          "yaml.validate" = true;
+
+          # Go settings
+          "go.toolsManagement.autoUpdate" = true;
+
+          # Other settings
+          "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
+          "redhat.telemetry.enabled" = false;
+          "docker.showStartPage" = false;
+
+          # GitHub Copilot settings
+          "github.copilot.enable" = {
+            "*" = true;
+            "yaml" = true;
+            "plaintext" = true;
+            "markdown" = true;
+          };
+          "github.copilot.chat.enable" = {
+            "*" = true;
+          };
+
+          "claudeCode.selectedModel" = "opus[1m]";
         };
-        "terraform.languageServer.enable" = true;
-
-        # YAML settings
-        "yaml.schemaStore.enable" = true;
-        "yaml.validate" = true;
-
-        # Go settings
-        "go.toolsManagement.autoUpdate" = true;
-
-        # Other settings
-        "vsintellicode.modify.editor.suggestSelection" = "automaticallyOverrodeDefaultValue";
-        "redhat.telemetry.enabled" = false;
-        "docker.showStartPage" = false;
-
-        # GitHub Copilot settings
-        "github.copilot.enable" = {
-          "*" = true;
-          "yaml" = true;
-          "plaintext" = true;
-          "markdown" = true;
-        };
-        "github.copilot.chat.enable" = {
-          "*" = true;
-        };
-
-        "claudeCode.selectedModel" = "opus[1m]";
       };
     };
-  };
 
-  # Automatically install extensions on activation.
-  # DONT_PROMPT_WSL_INSTALL suppresses the interactive "install VS Code in
-  # Windows instead" prompt the Linux `code` CLI shows under WSL (it reads from
-  # /dev/tty, so it would otherwise hang the activation). stdin is also closed
-  # as a belt-and-suspenders against any other prompt.
-  home.activation.installVSCodeExtensions = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    echo "Installing VSCode extensions..."
-    EXTENSIONS="${extensionsList}"
-    for ext in $EXTENSIONS; do
-      $DRY_RUN_CMD env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
-    done
-  '';
-}
+    # Automatically install extensions on activation.
+    # DONT_PROMPT_WSL_INSTALL suppresses the interactive "install VS Code in
+    # Windows instead" prompt the Linux `code` CLI shows under WSL (it reads from
+    # /dev/tty, so it would otherwise hang the activation). stdin is also closed
+    # as a belt-and-suspenders against any other prompt.
+    home.activation.installVSCodeExtensions = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      echo "Installing VSCode extensions..."
+      EXTENSIONS="${extensionsList}"
+      for ext in $EXTENSIONS; do
+        $DRY_RUN_CMD env DONT_PROMPT_WSL_INSTALL=1 ${pkgs.vscode}/bin/code --extensions-dir ${config.xdg.dataHome}/vscode/extensions --install-extension "$ext" </dev/null 2>/dev/null || true
+      done
+    '';
+  }
