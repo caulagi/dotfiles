@@ -45,6 +45,18 @@ foreach ($ext in $extensions) {
     & $code --install-extension $ext --force
 }
 
+# Use file-based password store instead of OS keyring on windows
+$argvPath = Join-Path $env:USERPROFILE '.vscode\argv.json'
+New-Item -ItemType Directory -Force -Path (Split-Path $argvPath) | Out-Null
+$argv = if (Test-Path $argvPath) {
+    # Strip // comments VSCode ships in argv.json so ConvertFrom-Json can parse it.
+    $raw = (Get-Content $argvPath -Raw) -replace '(?m)^\s*//.*$', ''
+    if ($raw.Trim()) { $raw | ConvertFrom-Json } else { [PSCustomObject]@{} }
+} else { [PSCustomObject]@{} }
+$argv | Add-Member -NotePropertyName 'password-store' -NotePropertyValue 'basic' -Force
+Set-Content -Path $argvPath -Value ($argv | ConvertTo-Json) -Encoding ascii
+Write-Host "Wrote $argvPath"
+
 # Apply settings (look and feel), backing up any existing settings.json.
 $userDir = Join-Path $env:APPDATA 'Code\User'
 New-Item -ItemType Directory -Force -Path $userDir | Out-Null
