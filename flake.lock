@@ -57,11 +57,28 @@
         "type": "github"
       }
     },
+    "nixpkgs-terraform": {
+      "locked": {
+        "lastModified": 1762383351,
+        "narHash": "sha256-UuOid6NEBu2g4N9tnn0LV+HnUQEtO5XAXYRIdGwADcM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "32104fd4f3652b813a8c528dbef33452d3394c45",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "32104fd4f3652b813a8c528dbef33452d3394c45",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-terraform": "nixpkgs-terraform"
       }
     }
   },

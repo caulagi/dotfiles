@@ -3,6 +3,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    # Pinned to a commit that ships terraform 1.13.5
+    nixpkgs-terraform.url = "github:nixos/nixpkgs/32104fd4f3652b813a8c528dbef33452d3394c45";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -11,19 +14,33 @@
   };
   outputs = inputs @ {
     nixpkgs,
+    nixpkgs-terraform,
     home-manager,
     darwin,
     ...
   }: let
     hosts = import ./hosts.nix;
 
+    # Always provide terraform 1.13 from the pinned nixpkgs
+    terraformOverlay = final: prev: {
+      terraform =
+        (import nixpkgs-terraform {
+          inherit (prev.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        }).terraform;
+    };
+
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [terraformOverlay];
+      };
+
     mkDarwinHost = name: host:
       darwin.lib.darwinSystem {
         system = host.system;
-        pkgs = import nixpkgs {
-          system = host.system;
-          config.allowUnfree = true;
-        };
+        pkgs = mkPkgs host.system;
         specialArgs = {inherit host;};
         modules = [
           ./modules/darwin
@@ -47,10 +64,7 @@
 
     mkHomeHost = name: host:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = host.system;
-          config.allowUnfree = true;
-        };
+        pkgs = mkPkgs host.system;
         extraSpecialArgs = {inherit host;};
         modules =
           map (user: {
