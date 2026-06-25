@@ -3,8 +3,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-    # Pinned to a commit that ships terraform 1.13.5
-    nixpkgs-terraform.url = "github:nixos/nixpkgs/32104fd4f3652b813a8c528dbef33452d3394c45";
+    # Pinned to a commit that ships terraform 1.13.3
+    nixpkgs-terraform.url = "github:nixos/nixpkgs/bce5fe2bb998488d8e7e7856315f90496723793c";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +21,7 @@
   }: let
     hosts = import ./hosts.nix;
 
-    # Always provide terraform 1.13 from the pinned nixpkgs
+    # Always provide terraform 1.13.3 from the pinned nixpkgs
     terraformOverlay = final: prev: {
       terraform =
         (import nixpkgs-terraform {
