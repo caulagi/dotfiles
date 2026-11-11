@@ -43,6 +43,7 @@
     less
     neovim-remote
     nodejs_24
+    opencode
     pre-commit
     ripgrep
     shellcheck
