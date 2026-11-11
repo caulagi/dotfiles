@@ -1,6 +1,9 @@
 switch:
 	sudo darwin-rebuild switch --flake .#office-laptop
 
+switch-ica:
+	sudo darwin-rebuild switch --flake .#ica-laptop
+
 switch-linux:
 	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && home-manager switch --flake .#home-laptop
 	@# Replace Nix store symlinks with writable copies for Cloud Shell compatibility
@@ -29,4 +32,4 @@ bootstrap-wsl:
 	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && \
 		nix run home-manager/master -- switch --flake .#wsl -b backup
 
-.PHONY: switch switch-linux switch-wsl bootstrap-cloudshell bootstrap-wsl
+.PHONY: switch switch-ica switch-linux switch-wsl bootstrap-cloudshell bootstrap-wsl
