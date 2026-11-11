@@ -9,6 +9,9 @@
   ica-laptop = {
     system = "aarch64-darwin";
     isDarwin = true;
+    # Nix on this Mac was installed with the Determinate installer, which runs
+    # its own daemon; nix-darwin must not manage Nix here.
+    determinateNix = true;
     hostname = "SEM7NVTFYKW";
     users = ["icw099"];
     git = {

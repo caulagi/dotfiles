@@ -14,7 +14,10 @@
     shells = [pkgs.bashInteractive pkgs.fish];
   };
 
-  nix.extraOptions = ''
+  # Determinate Nix manages the Nix install itself (flakes are already on), so
+  # nix-darwin only manages Nix on hosts that use upstream Nix.
+  nix.enable = !(host.determinateNix or false);
+  nix.extraOptions = lib.mkIf (!(host.determinateNix or false)) ''
     experimental-features = nix-command flakes
   '';
 
