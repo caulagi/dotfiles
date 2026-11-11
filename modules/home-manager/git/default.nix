@@ -4,30 +4,26 @@
   host ? {},
   ...
 }: let
-  isWsl = host.isWsl or false;
+  # Per-host git identity from hosts.nix; hosts without a `git` block get the
+  # personal defaults below.
+  gitCfg = host.git or {};
 in {
   programs.git = {
     enable = true;
     lfs.enable = true;
 
-    signing.key =
-      if isWsl
-      then "E2B5C519C7475958"
-      else "0179B829112D6737";
+    signing.key = gitCfg.signingKey or "0179B829112D6737";
 
     settings = {
       user = {
         name = "Pradip Caulagi";
-        email =
-          if isWsl
-          then "pradip.caulagi@ica.se"
-          else "caulagi@gmail.com";
+        email = gitCfg.email or "caulagi@gmail.com";
       };
       color.ui = true;
       commit.gpgsign = true;
       core.ignorecase = false;
       diff.submodule = "log";
-      github.user = "caulagi";
+      github.user = gitCfg.githubUser or "caulagi";
       init.defaultBranch = "main";
       pager.branch = false;
       pull.ff = "only";

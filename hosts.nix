@@ -11,6 +11,11 @@
     isDarwin = true;
     hostname = "SEM7NVTFYKW";
     users = ["icw099"];
+    git = {
+      email = "pradip.caulagi@ica.se";
+      githubUser = "pcaulagi-ica";
+      # signingKey = "...";  # set once the ICA GPG key exists on this Mac
+    };
   };
 
   home-laptop = {
@@ -26,5 +31,9 @@
     isWsl = true;
     hostname = "SEC56565";
     users = ["icw099"];
+    git = {
+      email = "pradip.caulagi@ica.se";
+      signingKey = "E2B5C519C7475958";
+    };
   };
 }
