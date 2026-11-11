@@ -32,4 +32,7 @@ bootstrap-wsl:
 	export PATH=/nix/var/nix/profiles/default/bin:$$HOME/.nix-profile/bin:$$PATH && \
 		nix run home-manager/master -- switch --flake .#wsl -b backup
 
-.PHONY: switch switch-ica switch-linux switch-wsl bootstrap-cloudshell bootstrap-wsl
+update:
+	nix flake update
+
+.PHONY: update switch switch-ica switch-linux switch-wsl bootstrap-cloudshell bootstrap-wsl
