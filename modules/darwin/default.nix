@@ -59,6 +59,11 @@
     '';
   };
 
+  fonts.packages = [
+    pkgs.fira-code
+    pkgs.nerd-fonts.fira-code
+  ];
+
   # Temporarily disable homebrew due to macOS 26.0.1 compatibility issues
   # homebrew = {
   #   enable = true;
