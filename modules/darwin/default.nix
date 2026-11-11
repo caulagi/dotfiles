@@ -44,11 +44,12 @@
     activationScripts.postActivation.text = let
       userList = lib.concatStringsSep " " host.users;
     in ''
-      for user in ${userList}; do
+      users=(${userList})
+      for user in "''${users[@]}"; do
         if id "$user" &>/dev/null; then
-          if ! dscl . -read /Users/$user UserShell | grep -q "${pkgs.bashInteractive}/bin/bash"; then
+          if ! dscl . -read "/Users/$user" UserShell | grep -q "${pkgs.bashInteractive}/bin/bash"; then
             echo "Setting shell for $user to ${pkgs.bashInteractive}/bin/bash"
-            sudo chsh -s ${pkgs.bashInteractive}/bin/bash $user
+            chsh -s ${pkgs.bashInteractive}/bin/bash "$user"
           fi
         fi
       done
