@@ -43,7 +43,11 @@
     neovim-remote
     nodejs_24
     opencode
-    pre-commit
+    (pre-commit.overridePythonAttrs (old: {
+      doCheck = false;
+      nativeCheckInputs = [];
+      env = builtins.removeAttrs old.env ["DOTNET_ROOT"];
+    }))
     ripgrep
     shellcheck
     terraform
