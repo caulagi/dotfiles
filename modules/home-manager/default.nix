@@ -45,6 +45,7 @@
     opencode
     (pre-commit.overridePythonAttrs (old: {
       doCheck = false;
+      dontUsePytestCheck = true;
       nativeCheckInputs = [];
       env = builtins.removeAttrs old.env ["DOTNET_ROOT"];
     }))
