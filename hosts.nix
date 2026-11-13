@@ -4,6 +4,10 @@
     isDarwin = true;
     hostname = "pradipcaulagi-macbook";
     users = ["pradipcaulagi" "pcaulagi" "nixuser2"];
+    git.work = {
+      dir = "~/playground/src/";
+      email = "pradip@playgroundtech.io";
+    };
   };
 
   ica-laptop = {
@@ -15,9 +19,12 @@
     hostname = "SEM7NVTFYKW";
     users = ["icw099"];
     git = {
-      email = "pradip.caulagi@ica.se";
       githubUser = "caulagi";
-      signingKey = "D7FE97DE74A0B70A";
+      work = {
+        dir = "~/ica/src/";
+        email = "pradip.caulagi@ica.se";
+        signingKey = "D7FE97DE74A0B70A";
+      };
     };
   };
 

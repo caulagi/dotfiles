@@ -5,8 +5,10 @@
   ...
 }: let
   # Per-host git identity from hosts.nix; hosts without a `git` block get the
-  # personal defaults below.
+  # personal defaults below. `work` overrides the identity for repositories
+  # under one directory.
   gitCfg = host.git or {};
+  work = gitCfg.work or null;
 in {
   programs.git = {
     enable = true;
@@ -14,10 +16,17 @@ in {
 
     signing.key = gitCfg.signingKey or "0179B829112D6737";
 
+    includes = pkgs.lib.optional (work != null) {
+      condition = "gitdir:${work.dir}";
+      contents.user =
+        {email = work.email;}
+        // pkgs.lib.optionalAttrs (work ? signingKey) {signingKey = work.signingKey;};
+    };
+
     settings = {
       user = {
         name = "Pradip Caulagi";
-        email = gitCfg.email or "caulagi@gmail.com";
+        email = gitCfg.email or "me@caulagi.com";
       };
       color.ui = true;
       commit.gpgsign = true;
