@@ -16,8 +16,8 @@
     users = ["icw099"];
     git = {
       email = "pradip.caulagi@ica.se";
-      githubUser = "pcaulagi-ica";
-      # signingKey = "...";  # set once the ICA GPG key exists on this Mac
+      githubUser = "caulagi";
+      signingKey = "D7FE97DE74A0B70A";
     };
   };
 
