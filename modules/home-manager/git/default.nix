@@ -26,7 +26,7 @@ in {
     settings = {
       user = {
         name = "Pradip Caulagi";
-        email = gitCfg.email or "me@caulagi.com";
+        email = gitCfg.email or "caulagi@gmail.com";
       };
       color.ui = true;
       commit.gpgsign = true;
