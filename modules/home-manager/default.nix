@@ -16,6 +16,7 @@
   ];
 
   home.packages = with pkgs; [
+    codex
     colima
     curl
     delta
