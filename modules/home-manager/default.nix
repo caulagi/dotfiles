@@ -4,6 +4,7 @@
 
   imports = [
     ./bat
+    ./copilot-daily-review
     ./fish
     ./git
     ./lazygit
