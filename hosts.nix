@@ -20,6 +20,7 @@
     users = ["icw099"];
     git = {
       githubUser = "caulagi";
+      signingKey = "A2AE51A26C8596BFFC3CF969BD7A6C0924EC8068";
       work = {
         dir = "~/ica/src/";
         email = "pradip.caulagi@ica.se";
